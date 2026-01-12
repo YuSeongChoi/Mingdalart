@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MingdalartApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(
+                    for: [MandalaBoardEntity.self, MandalaCellEntity.self]
+                )
         }
     }
 }
