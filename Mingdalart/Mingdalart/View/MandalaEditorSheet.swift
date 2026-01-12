@@ -25,6 +25,7 @@ struct MandalaEditorSheet: View {
                         .foregroundStyle(.secondary)
                 }
 
+                // 줄바꿈 입력이 가능한 간단한 편집 필드.
                 TextField("내용을 입력하세요", text: $cell.text, axis: .vertical)
                     .textFieldStyle(.roundedBorder)
                     .lineLimit(3, reservesSpace: true)
@@ -37,6 +38,8 @@ struct MandalaEditorSheet: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
+                        // 중앙 subGoal이면 바깥 subGoal로 텍스트를 복사한다.
+                        MandalaStore.syncSubGoalIfNeeded(for: cell, in: modelContext)
                         try? modelContext.save()
                         dismiss()
                     }

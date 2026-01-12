@@ -5,7 +5,6 @@
 //  Created by YuSeongChoi on 1/12/26.
 //
 
-import Foundation
 import SwiftUI
 
 enum MandalaRole: Codable, Hashable {
@@ -13,6 +12,7 @@ enum MandalaRole: Codable, Hashable {
     case subGoal
     case task
     
+    // 그리드에서 기본 표시 텍스트로 사용한다.
     var description: String {
         switch self {
         case .main:
@@ -38,22 +38,23 @@ enum MandalaRole: Codable, Hashable {
     var backgroundColor: Color {
         switch self {
         case .main:
-            return Color(red: 0.99, green: 0.93, blue: 0.75)
+            // 다크모드에서도 대비가 유지되는 시스템 색상 사용.
+            return Color(.systemYellow).opacity(0.85)
         case .subGoal:
-            return Color(red: 0.88, green: 0.94, blue: 0.99)
+            return Color(.systemTeal).opacity(0.25)
         case .task:
-            return Color(red: 0.97, green: 0.97, blue: 0.97)
+            return Color(.secondarySystemBackground)
         }
     }
 
     var textColor: Color {
         switch self {
         case .main:
-            return Color(red: 0.35, green: 0.22, blue: 0.12)
+            return Color(.label)
         case .subGoal:
-            return Color(red: 0.10, green: 0.24, blue: 0.40)
+            return Color(.label)
         case .task:
-            return Color(red: 0.20, green: 0.20, blue: 0.20)
+            return Color(.label)
         }
     }
 }

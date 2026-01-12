@@ -11,25 +11,14 @@ import SwiftUI
 @Observable
 @MainActor
 final class MandalaViewModel {
-    private let context: ModelContext
     var board: MandalaBoardEntity
 
-    init(board: MandalaBoardEntity, context: ModelContext) {
+    init(board: MandalaBoardEntity) {
         self.board = board
-        self.context = context
     }
 
+    // 9x9 셀을 인덱스 순서대로 정렬해 그리드와 매칭한다.
     var orderedCells: [MandalaCellEntity] {
         board.cells.sorted { $0.index < $1.index }
-    }
-
-    func cell(atRow row: Int, col: Int) -> MandalaCellEntity? {
-        let idx = row * MandalaStore.gridCount + col
-        return orderedCells.first { $0.index == idx }
-    }
-
-    func updateText(_ text: String, for cell: MandalaCellEntity) {
-        cell.text = text
-        try? context.save()
     }
 }

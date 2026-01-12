@@ -18,6 +18,7 @@ struct MandalaGridView: View {
             let cell = side / CGFloat(gridCount)
 
             ZStack(alignment: .topLeading) {
+                // 9x9 셀을 정사각형 그리드로 배치한다.
                 LazyVGrid(
                     columns: Array(
                         repeating: GridItem(.fixed(cell), spacing: 0),
@@ -25,7 +26,7 @@ struct MandalaGridView: View {
                     ),
                     spacing: 0
                 ) {
-                    ForEach(cells, id: \.id) { cellItem in
+                    ForEach(cells, id: \.index) { cellItem in
                         MandalaCellView(cell: cellItem, size: cell)
                             .contentShape(Rectangle())
                             .onTapGesture {
@@ -35,20 +36,13 @@ struct MandalaGridView: View {
                 }
                 .frame(width: side, height: side, alignment: .topLeading)
 
-                // Grid overlay keeps borders crisp over the cell backgrounds.
+                // 셀 위에 선을 그려 경계가 선명하게 보이도록 한다.
                 MandalaGridLines(gridCount: gridCount, cellSize: cell)
                     .stroke(Color.black, lineWidth: 1)
 
-                // Thicker 3x3 separators
+                // 3x3 블록 경계선은 더 굵게 표시한다.
                 MandalaSeparatorLines(gridCount: gridCount, cellSize: cell)
                     .stroke(Color.black, lineWidth: 2)
-
-                // Center focus
-                let inset: CGFloat = 1.0
-                RoundedRectangle(cornerRadius: 4)
-                    .stroke(Color.black, lineWidth: 0.6)
-                    .frame(width: cell - inset * 2, height: cell - inset * 2)
-                    .offset(x: 4 * cell + inset, y: 4 * cell + inset)
             }
             .frame(width: side, height: side, alignment: .topLeading)
             .position(x: proxy.size.width / 2, y: side / 2)
@@ -78,6 +72,7 @@ private struct MandalaCellView: View {
     }
 
     private var displayText: String {
+        // 입력된 텍스트가 있으면 그대로, 없으면 역할명(메인/서브)만 표시.
         if !cell.text.isEmpty { return cell.text }
         return cell.role == .task ? "" : cell.role.description
     }
@@ -92,14 +87,14 @@ struct MandalaGridLines: Shape {
 
         let side = cellSize * CGFloat(gridCount)
 
-        // Vertical lines (0...gridCount)
+        // 세로 선
         for i in 0...gridCount {
             let x = CGFloat(i) * cellSize
             p.move(to: CGPoint(x: x, y: 0))
             p.addLine(to: CGPoint(x: x, y: side))
         }
 
-        // Horizontal lines (0...gridCount)
+        // 가로 선
         for i in 0...gridCount {
             let y = CGFloat(i) * cellSize
             p.move(to: CGPoint(x: 0, y: y))
@@ -118,7 +113,7 @@ struct MandalaSeparatorLines: Shape {
         var p = Path()
         let side = cellSize * CGFloat(gridCount)
 
-        // 3x3 block separators at 0,3,6,9
+        // 3x3 블록 경계선(0,3,6,9)에만 굵은 선을 그린다.
         for i in stride(from: 0, through: gridCount, by: 3) {
             let x = CGFloat(i) * cellSize
             p.move(to: CGPoint(x: x, y: 0))

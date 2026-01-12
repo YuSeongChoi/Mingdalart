@@ -10,27 +10,31 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \MandalaBoardEntity.createdAt) private var boards: [MandalaBoardEntity]
+    @Query private var boards: [MandalaBoardEntity]
     @State private var editingCell: MandalaCellEntity?
 
     var body: some View {
-        Group {
+        VStack(spacing: 0) {
             if let board = boards.first {
-                let viewModel = MandalaViewModel(board: board, context: modelContext)
+                let viewModel = MandalaViewModel(board: board)
                 MandalaGridView(
                     cells: viewModel.orderedCells,
                     onSelect: { cell in
+                        // 셀 탭 시 편집 시트를 띄운다.
                         editingCell = cell
                     }
                 )
-                .padding(16)
-                .background(Color.white)
+                .padding(.top, 20)
+                .padding(.horizontal, 4)
             } else {
                 ProgressView("Loading...")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            Spacer(minLength: 0)
         }
+        .background(Color(.systemBackground))
         .task {
+            // 최초 실행 시 기본 보드 생성.
             MandalaStore.ensureDefaultBoard(in: modelContext)
         }
         .sheet(item: $editingCell) { cell in
