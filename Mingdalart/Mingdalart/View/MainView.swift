@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct MainView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var boards: [MandalaBoardEntity]
     @State private var editingCell: MandalaCellEntity?

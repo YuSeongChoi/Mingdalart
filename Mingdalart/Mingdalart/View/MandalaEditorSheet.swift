@@ -12,6 +12,7 @@ struct MandalaEditorSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @Bindable var cell: MandalaCellEntity
+    private let maxTextLength = 20
 
     var body: some View {
         NavigationStack {
@@ -25,10 +26,21 @@ struct MandalaEditorSheet: View {
                         .foregroundStyle(.secondary)
                 }
 
-                // 줄바꿈 입력이 가능한 간단한 편집 필드.
-                TextField("내용을 입력하세요", text: $cell.text, axis: .vertical)
+                // 엔터 없이 한 줄만 입력되도록 하고, 20자 제한을 둔다.
+                TextField("내용을 입력하세요", text: $cell.text)
                     .textFieldStyle(.roundedBorder)
-                    .lineLimit(3, reservesSpace: true)
+                    .onChange(of: cell.text) { _, newValue in
+                        if newValue.count > maxTextLength {
+                            cell.text = String(newValue.prefix(maxTextLength))
+                        }
+                    }
+                HStack {
+                    Spacer()
+                    Text("\(cell.text.count)/\(maxTextLength)")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .monospacedDigit()
+                }
 
                 Spacer()
             }

@@ -11,11 +11,18 @@ struct MandalaGridView: View {
     private let gridCount: Int = MandalaStore.gridCount
     let cells: [MandalaCellEntity]
     let onSelect: (MandalaCellEntity) -> Void
+    @State private var scale: CGFloat = 1.0
+    @State private var lastScale: CGFloat = 1.0
+    @State private var offset: CGSize = .zero
+    @State private var lastOffset: CGSize = .zero
+    private let minScale: CGFloat = 1.0
+    private let maxScale: CGFloat = 1.8
 
     var body: some View {
         GeometryReader { proxy in
             let side = min(proxy.size.width, proxy.size.height)
             let cell = side / CGFloat(gridCount)
+            let maxOffset = maxAllowedOffset(side: side, scale: scale)
 
             ZStack(alignment: .topLeading) {
                 // 9x9 셀을 정사각형 그리드로 배치한다.
@@ -46,84 +53,46 @@ struct MandalaGridView: View {
             }
             .frame(width: side, height: side, alignment: .topLeading)
             .position(x: proxy.size.width / 2, y: side / 2)
+            .scaleEffect(scale)
+            .offset(clamped(offset, limit: maxOffset))
+            .gesture(magnificationGesture(side: side))
+            .simultaneousGesture(dragGesture(maxOffset: maxOffset))
         }
         .aspectRatio(1, contentMode: .fit)
     }
-}
 
-private struct MandalaCellView: View {
-    let cell: MandalaCellEntity
-    let size: CGFloat
-
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(cell.role.backgroundColor)
-
-            Text(displayText)
-                .font(cell.role.font)
-                .foregroundStyle(cell.role.textColor)
-                .lineLimit(3)
-                .multilineTextAlignment(.center)
-                .padding(4)
-                .minimumScaleFactor(0.6)
-        }
-        .frame(width: size, height: size)
+    private func magnificationGesture(side: CGFloat) -> some Gesture {
+        MagnificationGesture()
+            .onChanged { value in
+                let clamped = min(max(lastScale * value, minScale), maxScale)
+                scale = clamped
+            }
+            .onEnded { _ in
+                lastScale = scale
+                if scale == minScale {
+                    offset = .zero
+                    lastOffset = .zero
+                } else {
+                    offset = clamped(offset, limit: maxAllowedOffset(side: side, scale: scale))
+                    lastOffset = offset
+                }
+            }
     }
 
-    private var displayText: String {
-        // 입력된 텍스트가 있으면 그대로, 없으면 역할명(메인/서브)만 표시.
-        if !cell.text.isEmpty { return cell.text }
-        return cell.role == .task ? "" : cell.role.description
-    }
-}
-
-struct MandalaGridLines: Shape {
-    let gridCount: Int
-    let cellSize: CGFloat
-
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-
-        let side = cellSize * CGFloat(gridCount)
-
-        // 세로 선
-        for i in 0...gridCount {
-            let x = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: x, y: 0))
-            p.addLine(to: CGPoint(x: x, y: side))
-        }
-
-        // 가로 선
-        for i in 0...gridCount {
-            let y = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: 0, y: y))
-            p.addLine(to: CGPoint(x: side, y: y))
-        }
-
-        return p
-    }
-}
-
-struct MandalaSeparatorLines: Shape {
-    let gridCount: Int
-    let cellSize: CGFloat
-
-    func path(in rect: CGRect) -> Path {
-        var p = Path()
-        let side = cellSize * CGFloat(gridCount)
-
-        // 3x3 블록 경계선(0,3,6,9)에만 굵은 선을 그린다.
-        for i in stride(from: 0, through: gridCount, by: 3) {
-            let x = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: x, y: 0))
-            p.addLine(to: CGPoint(x: x, y: side))
-
-            let y = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: 0, y: y))
-            p.addLine(to: CGPoint(x: side, y: y))
-        }
-
-        return p
+    private func dragGesture(maxOffset: CGSize) -> some Gesture {
+        DragGesture()
+            .onChanged { value in
+                guard scale > minScale else { return }
+                let proposed = CGSize(
+                    width: lastOffset.width + value.translation.width,
+                    height: lastOffset.height + value.translation.height
+                )
+                offset = clamped(proposed, limit: maxOffset)
+            }
+            .onEnded { _ in
+                guard scale > minScale else { return }
+                lastOffset = clamped(offset, limit: maxOffset)
+                offset = lastOffset
+            }
     }
 }

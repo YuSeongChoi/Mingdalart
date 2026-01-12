@@ -27,11 +27,11 @@ enum MandalaRole: Codable, Hashable {
     var font: Font {
         switch self {
         case .main:
-            return .title2.bold()
+            return .headline.bold()
         case .subGoal:
-            return .headline
+            return .subheadline
         case .task:
-            return .body
+            return .footnote
         }
     }
 

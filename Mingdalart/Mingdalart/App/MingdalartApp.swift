@@ -12,7 +12,7 @@ import SwiftData
 struct MingdalartApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
                 .modelContainer(
                     // SwiftData 컨테이너를 앱 전역에 주입한다.
                     for: [MandalaBoardEntity.self, MandalaCellEntity.self]
