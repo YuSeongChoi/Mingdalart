@@ -7,9 +7,9 @@
 
 import Foundation
 
-public struct MandalaBoard {
-    public var title: String
-    public var cells: [MandalaCell]
+struct MandalaBoard {
+    var title: String
+    var cells: [MandalaCell]
     
     init(title: String, cells: [MandalaCell]) {
         self.title = title
