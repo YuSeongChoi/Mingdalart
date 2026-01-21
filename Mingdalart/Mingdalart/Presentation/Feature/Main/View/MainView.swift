@@ -10,13 +10,12 @@ import SwiftData
 
 struct MainView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var boards: [MandalaBoardEntity]
-    @State private var editingCell: MandalaCellEntity?
+    @State private var viewModel: MandalaViewModel?
+    @State private var editingCell: MandalaCell?
 
     var body: some View {
         VStack(spacing: 0) {
-            if let board = boards.first {
-                let viewModel = MandalaViewModel(board: board)
+            if let viewModel, viewModel.board != nil {
                 MandalaGridView(
                     cells: viewModel.orderedCells,
                     onSelect: { cell in
@@ -34,11 +33,16 @@ struct MainView: View {
         }
         .background(Color(.systemBackground))
         .task {
-            // 최초 실행 시 기본 보드 생성.
-            MandalaStore.ensureDefaultBoard(in: modelContext)
+            if viewModel == nil {
+                let repository = SwiftDataMandalaRepository(context: modelContext)
+                viewModel = MandalaViewModel(useCase: MandalaUseCase(repository: repository))
+                viewModel?.load()
+            }
         }
         .sheet(item: $editingCell) { cell in
-            MandalaEditorSheet(cell: cell)
+            MandalaEditorSheet(cell: cell) { text in
+                viewModel?.updateCellText(index: cell.index, text: text)
+            }
         }
     }
 }

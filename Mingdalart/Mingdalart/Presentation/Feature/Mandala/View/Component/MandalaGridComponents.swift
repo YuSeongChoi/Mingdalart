@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MandalaCellView: View {
-    let cell: MandalaCellEntity
+    let cell: MandalaCell
     let size: CGFloat
 
     var body: some View {
