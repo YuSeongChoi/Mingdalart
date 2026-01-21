@@ -1,54 +1,100 @@
 //
-//  MandalaDataSource.swift
+//  SwiftDataMandalaRepository.swift
 //  Mingdalart
 //
 //  Created by YuSeongChoi on 1/21/26.
 //
 
 import Foundation
+import SwiftData
 
-public actor MandalaDataSource {
-    
-    static func ensureDefaultBoard(in context: ModelContext) {
+@MainActor
+final class SwiftDataMandalaRepository: MandalaRepository {
+    private let context: ModelContext
+
+    init(context: ModelContext) {
+        self.context = context
+    }
+
+    // MARK: - MandalaRepository
+
+    func fetchBoard() -> MandalaBoard? {
         let descriptor = FetchDescriptor<MandalaBoardEntity>()
-        let existing = (try? context.fetch(descriptor)) ?? []
-        if existing.isEmpty {
-            // 최초 실행 시 기본 보드를 하나 만든다.
-            let board = makeDefaultBoard(title: "만다라트 #1")
-            context.insert(board)
-            try? context.save()
-            return
-        }
-
-        if let board = existing.first {
-            // 기존 보드가 있어도 역할 규칙을 최신 상태로 맞춘다.
-            normalizeRoles(for: board, in: context)
-        }
+        guard let entity = (try? context.fetch(descriptor))?.first else { return nil }
+        return toDomain(entity)
     }
 
-    static func makeDefaultBoard(title: String) -> MandalaBoardEntity {
-        let board = MandalaBoardEntity(title: title)
-        let cells = (0..<cellCount).map { index -> MandalaCellEntity in
-            let role = roleForIndex(index)
-            return MandalaCellEntity(index: index, role: role, board: board)
-        }
-        board.cells = cells
-        return board
+    func saveBoard(_ board: MandalaBoard) {
+        let entity = fetchOrCreateBoardEntity()
+        update(entity, with: board)
+        try? context.save()
     }
-    
-    
-    static func normalizeRoles(for board: MandalaBoardEntity, in context: ModelContext) {
-        var changed = false
-        // 인덱스 규칙을 기준으로 역할이 맞는지 재정렬한다.
+
+    func saveCell(_ cell: MandalaCell) {
+        let boardEntity = fetchOrCreateBoardEntity()
+        if let existing = boardEntity.cells.first(where: { $0.index == cell.index }) {
+            existing.text = cell.text
+            existing.role = cell.role
+        } else {
+            let newCell = MandalaCellEntity(
+                index: cell.index,
+                text: cell.text,
+                role: cell.role,
+                board: boardEntity
+            )
+            boardEntity.cells.append(newCell)
+        }
+        try? context.save()
+    }
+
+    private func fetchOrCreateBoardEntity() -> MandalaBoardEntity {
+        let descriptor = FetchDescriptor<MandalaBoardEntity>()
+        if let entity = (try? context.fetch(descriptor))?.first {
+            return entity
+        }
+        let entity = MandalaBoardEntity(title: "만다라트 #1")
+        context.insert(entity)
+        return entity
+    }
+
+    private func update(_ entity: MandalaBoardEntity, with board: MandalaBoard) {
+        entity.title = board.title
+
+        var existingByIndex: [Int: MandalaCellEntity] = [:]
+        for cell in entity.cells {
+            existingByIndex[cell.index] = cell
+        }
+
+        var updatedCells: [MandalaCellEntity] = []
+        updatedCells.reserveCapacity(board.cells.count)
+
         for cell in board.cells {
-            let desired = roleForIndex(cell.index)
-            if cell.role != desired {
-                cell.role = desired
-                changed = true
+            if let existing = existingByIndex[cell.index] {
+                existing.text = cell.text
+                existing.role = cell.role
+                updatedCells.append(existing)
+            } else {
+                let newCell = MandalaCellEntity(
+                    index: cell.index,
+                    text: cell.text,
+                    role: cell.role,
+                    board: entity
+                )
+                updatedCells.append(newCell)
             }
         }
-        if changed {
-            try? context.save()
+
+        entity.cells = updatedCells
+    }
+}
+
+// MARK: - Mapping
+
+extension SwiftDataMandalaRepository {
+    private func toDomain(_ entity: MandalaBoardEntity) -> MandalaBoard {
+        let cells = entity.cells.map { cell in
+            MandalaCell(index: cell.index, text: cell.text, role: cell.role)
         }
+        return MandalaBoard(title: entity.title, cells: cells)
     }
 }
