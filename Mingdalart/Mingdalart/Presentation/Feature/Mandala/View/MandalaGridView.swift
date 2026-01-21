@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MandalaGridView: View {
-    private let gridCount: Int = MandalaStore.gridCount
-    let cells: [MandalaCellEntity]
-    let onSelect: (MandalaCellEntity) -> Void
+    private let gridCount: Int = MandalaRule.gridCount
+    let cells: [MandalaCell]
+    let onSelect: (MandalaCell) -> Void
     @State private var scale: CGFloat = 1.0
     @State private var lastScale: CGFloat = 1.0
     @State private var offset: CGSize = .zero

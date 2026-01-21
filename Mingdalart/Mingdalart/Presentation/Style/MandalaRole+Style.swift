@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension MandalaRole {
-    public var font: Font {
+    var font: Font {
         switch self {
         case .main:
             return .headline.bold()
@@ -19,7 +19,7 @@ extension MandalaRole {
         }
     }
 
-    public var backgroundColor: Color {
+    var backgroundColor: Color {
         switch self {
         case .main:
             // 다크모드에서도 대비가 유지되는 시스템 색상 사용.
@@ -31,7 +31,7 @@ extension MandalaRole {
         }
     }
 
-    public var textColor: Color {
+    var textColor: Color {
         switch self {
         case .main:
             return Color(.label)
