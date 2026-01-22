@@ -6,17 +6,54 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5DECFD7B2F21F32100D69A9B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD582F21F32100D69A9B /* AppEnvironment.swift */; };
+		5DECFD7C2F21F32100D69A9B /* MingdalartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD592F21F32100D69A9B /* MingdalartApp.swift */; };
+		5DECFD7D2F21F32100D69A9B /* MandalaBoardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */; };
+		5DECFD7E2F21F32100D69A9B /* MandalaCellEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD5C2F21F32100D69A9B /* MandalaCellEntity.swift */; };
+		5DECFD7F2F21F32100D69A9B /* SwiftDataMandalaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD5E2F21F32100D69A9B /* SwiftDataMandalaRepository.swift */; };
+		5DECFD802F21F32100D69A9B /* MandalaBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD612F21F32100D69A9B /* MandalaBoard.swift */; };
+		5DECFD812F21F32100D69A9B /* MandalaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD622F21F32100D69A9B /* MandalaCell.swift */; };
+		5DECFD822F21F32100D69A9B /* MandalaRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD632F21F32100D69A9B /* MandalaRole.swift */; };
+		5DECFD832F21F32100D69A9B /* MandalaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD642F21F32100D69A9B /* MandalaRule.swift */; };
+		5DECFD842F21F32100D69A9B /* MandalaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD662F21F32100D69A9B /* MandalaRepository.swift */; };
+		5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */; };
+		5DECFD862F21F32100D69A9B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6B2F21F32100D69A9B /* MainView.swift */; };
+		5DECFD872F21F32100D69A9B /* MandalaEditorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6E2F21F32100D69A9B /* MandalaEditorSheet.swift */; };
+		5DECFD882F21F32100D69A9B /* MandalaGridComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6F2F21F32100D69A9B /* MandalaGridComponents.swift */; };
+		5DECFD892F21F32100D69A9B /* MandalaGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD712F21F32100D69A9B /* MandalaGridView.swift */; };
+		5DECFD8A2F21F32100D69A9B /* MandalaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD732F21F32100D69A9B /* MandalaViewModel.swift */; };
+		5DECFD8B2F21F32100D69A9B /* MandalaRole+Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD772F21F32100D69A9B /* MandalaRole+Style.swift */; };
+		5DECFD8C2F21F32100D69A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DECFD562F21F32100D69A9B /* Assets.xcassets */; };
+		5DECFD8E2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */; };
+		5DECFD902F21F78500D69A9B /* UpdateCellTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */; };
+		5DECFD962F21F9F100D69A9B /* SaveCellUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		5DECFD562F21F32100D69A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5DECFD582F21F32100D69A9B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		5DECFD592F21F32100D69A9B /* MingdalartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartApp.swift; sourceTree = "<group>"; };
+		5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaBoardEntity.swift; sourceTree = "<group>"; };
+		5DECFD5C2F21F32100D69A9B /* MandalaCellEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaCellEntity.swift; sourceTree = "<group>"; };
+		5DECFD5E2F21F32100D69A9B /* SwiftDataMandalaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataMandalaRepository.swift; sourceTree = "<group>"; };
+		5DECFD612F21F32100D69A9B /* MandalaBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaBoard.swift; sourceTree = "<group>"; };
+		5DECFD622F21F32100D69A9B /* MandalaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaCell.swift; sourceTree = "<group>"; };
+		5DECFD632F21F32100D69A9B /* MandalaRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaRole.swift; sourceTree = "<group>"; };
+		5DECFD642F21F32100D69A9B /* MandalaRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaRule.swift; sourceTree = "<group>"; };
+		5DECFD662F21F32100D69A9B /* MandalaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaRepository.swift; sourceTree = "<group>"; };
+		5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaUseCase.swift; sourceTree = "<group>"; };
+		5DECFD6B2F21F32100D69A9B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5DECFD6E2F21F32100D69A9B /* MandalaEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaEditorSheet.swift; sourceTree = "<group>"; };
+		5DECFD6F2F21F32100D69A9B /* MandalaGridComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaGridComponents.swift; sourceTree = "<group>"; };
+		5DECFD712F21F32100D69A9B /* MandalaGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaGridView.swift; sourceTree = "<group>"; };
+		5DECFD732F21F32100D69A9B /* MandalaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaViewModel.swift; sourceTree = "<group>"; };
+		5DECFD772F21F32100D69A9B /* MandalaRole+Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MandalaRole+Style.swift"; sourceTree = "<group>"; };
+		5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnsureDefaultBoardUseCase.swift; sourceTree = "<group>"; };
+		5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCellTextUseCase.swift; sourceTree = "<group>"; };
+		5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCellUseCase.swift; sourceTree = "<group>"; };
 		5DF74BEF2F0E3F4E005E589C /* Mingdalart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mingdalart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		5DF74BF12F0E3F4E005E589C /* Mingdalart */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Mingdalart;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5DF74BEC2F0E3F4E005E589C /* Frameworks */ = {
@@ -29,10 +66,182 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DECFD572F21F32100D69A9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD562F21F32100D69A9B /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5DECFD5A2F21F32100D69A9B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD572F21F32100D69A9B /* Resources */,
+				5DECFD592F21F32100D69A9B /* MingdalartApp.swift */,
+				5DECFD582F21F32100D69A9B /* AppEnvironment.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		5DECFD5D2F21F32100D69A9B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */,
+				5DECFD5C2F21F32100D69A9B /* MandalaCellEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		5DECFD5F2F21F32100D69A9B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD5E2F21F32100D69A9B /* SwiftDataMandalaRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		5DECFD602F21F32100D69A9B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD5D2F21F32100D69A9B /* Entity */,
+				5DECFD5F2F21F32100D69A9B /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		5DECFD652F21F32100D69A9B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD632F21F32100D69A9B /* MandalaRole.swift */,
+				5DECFD642F21F32100D69A9B /* MandalaRule.swift */,
+				5DECFD612F21F32100D69A9B /* MandalaBoard.swift */,
+				5DECFD622F21F32100D69A9B /* MandalaCell.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5DECFD672F21F32100D69A9B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD662F21F32100D69A9B /* MandalaRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		5DECFD692F21F32100D69A9B /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */,
+				5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */,
+				5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */,
+				5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		5DECFD6A2F21F32100D69A9B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD652F21F32100D69A9B /* Models */,
+				5DECFD672F21F32100D69A9B /* Repository */,
+				5DECFD692F21F32100D69A9B /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		5DECFD6C2F21F32100D69A9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD6B2F21F32100D69A9B /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DECFD6D2F21F32100D69A9B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD6C2F21F32100D69A9B /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5DECFD702F21F32100D69A9B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD6E2F21F32100D69A9B /* MandalaEditorSheet.swift */,
+				5DECFD6F2F21F32100D69A9B /* MandalaGridComponents.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		5DECFD722F21F32100D69A9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD712F21F32100D69A9B /* MandalaGridView.swift */,
+				5DECFD702F21F32100D69A9B /* Component */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DECFD742F21F32100D69A9B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD732F21F32100D69A9B /* MandalaViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5DECFD752F21F32100D69A9B /* Mandala */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD722F21F32100D69A9B /* View */,
+				5DECFD742F21F32100D69A9B /* ViewModel */,
+			);
+			path = Mandala;
+			sourceTree = "<group>";
+		};
+		5DECFD762F21F32100D69A9B /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD6D2F21F32100D69A9B /* Main */,
+				5DECFD752F21F32100D69A9B /* Mandala */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		5DECFD782F21F32100D69A9B /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD772F21F32100D69A9B /* MandalaRole+Style.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		5DECFD792F21F32100D69A9B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD762F21F32100D69A9B /* Feature */,
+				5DECFD782F21F32100D69A9B /* Style */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		5DECFD7A2F21F32100D69A9B /* Mingdalart */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD5A2F21F32100D69A9B /* App */,
+				5DECFD602F21F32100D69A9B /* Data */,
+				5DECFD6A2F21F32100D69A9B /* Domain */,
+				5DECFD792F21F32100D69A9B /* Presentation */,
+			);
+			path = Mingdalart;
+			sourceTree = "<group>";
+		};
 		5DF74BE62F0E3F4E005E589C = {
 			isa = PBXGroup;
 			children = (
-				5DF74BF12F0E3F4E005E589C /* Mingdalart */,
+				5DECFD7A2F21F32100D69A9B /* Mingdalart */,
 				5DF74BF02F0E3F4E005E589C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,9 +268,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				5DF74BF12F0E3F4E005E589C /* Mingdalart */,
 			);
 			name = Mingdalart;
 			packageProductDependencies = (
@@ -109,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DECFD8C2F21F32100D69A9B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +326,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DECFD962F21F9F100D69A9B /* SaveCellUseCase.swift in Sources */,
+				5DECFD7B2F21F32100D69A9B /* AppEnvironment.swift in Sources */,
+				5DECFD7C2F21F32100D69A9B /* MingdalartApp.swift in Sources */,
+				5DECFD7D2F21F32100D69A9B /* MandalaBoardEntity.swift in Sources */,
+				5DECFD7E2F21F32100D69A9B /* MandalaCellEntity.swift in Sources */,
+				5DECFD7F2F21F32100D69A9B /* SwiftDataMandalaRepository.swift in Sources */,
+				5DECFD902F21F78500D69A9B /* UpdateCellTextUseCase.swift in Sources */,
+				5DECFD802F21F32100D69A9B /* MandalaBoard.swift in Sources */,
+				5DECFD812F21F32100D69A9B /* MandalaCell.swift in Sources */,
+				5DECFD822F21F32100D69A9B /* MandalaRole.swift in Sources */,
+				5DECFD832F21F32100D69A9B /* MandalaRule.swift in Sources */,
+				5DECFD842F21F32100D69A9B /* MandalaRepository.swift in Sources */,
+				5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */,
+				5DECFD862F21F32100D69A9B /* MainView.swift in Sources */,
+				5DECFD872F21F32100D69A9B /* MandalaEditorSheet.swift in Sources */,
+				5DECFD882F21F32100D69A9B /* MandalaGridComponents.swift in Sources */,
+				5DECFD892F21F32100D69A9B /* MandalaGridView.swift in Sources */,
+				5DECFD8A2F21F32100D69A9B /* MandalaViewModel.swift in Sources */,
+				5DECFD8E2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift in Sources */,
+				5DECFD8B2F21F32100D69A9B /* MandalaRole+Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
