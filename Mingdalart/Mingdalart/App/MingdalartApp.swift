@@ -10,13 +10,23 @@ import SwiftData
 
 @main
 struct MingdalartApp: App {
+    private let container: ModelContainer
+    private let environment: AppEnvironment
+    
+    init() {
+        do {
+            container = try ModelContainer(for: MandalaBoardEntity.self, MandalaCellEntity.self)
+        } catch {
+            fatalError("ModelContainer init failed : \(error)")
+        }
+        let context = ModelContext(container)
+        environment = AppEnvironment.live(modelContext: context)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
-                .modelContainer(
-                    // SwiftData 컨테이너를 앱 전역에 주입한다.
-                    for: [MandalaBoardEntity.self, MandalaCellEntity.self]
-                )
+            MainView(viewModel: MandalaViewModel(useCase: environment.mandalUseCase))
         }
+        .modelContainer(container)
     }
 }
