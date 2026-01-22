@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MandalaRole: Codable, Hashable {
+enum MandalaRole: Int, Codable, Hashable, Sendable {
     case main
     case subGoal
     case task

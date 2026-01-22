@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 extension MandalaRole {
     var font: Font {
         switch self {
