@@ -30,7 +30,18 @@
 		5DECFD962F21F9F100D69A9B /* SaveCellUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5D920D582F233A8200874F96 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5DF74BE72F0E3F4E005E589C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5DF74BEE2F0E3F4E005E589C;
+			remoteInfo = Mingdalart;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		5D920D542F233A8200874F96 /* MingdalartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MingdalartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DECFD562F21F32100D69A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DECFD582F21F32100D69A9B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		5DECFD592F21F32100D69A9B /* MingdalartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartApp.swift; sourceTree = "<group>"; };
@@ -55,7 +66,22 @@
 		5DF74BEF2F0E3F4E005E589C /* Mingdalart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mingdalart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5D920D552F233A8200874F96 /* MingdalartTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MingdalartTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		5D920D512F233A8200874F96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DF74BEC2F0E3F4E005E589C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -242,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				5DECFD7A2F21F32100D69A9B /* Mingdalart */,
+				5D920D552F233A8200874F96 /* MingdalartTests */,
 				5DF74BF02F0E3F4E005E589C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -250,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				5DF74BEF2F0E3F4E005E589C /* Mingdalart.app */,
+				5D920D542F233A8200874F96 /* MingdalartTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,6 +285,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D920D532F233A8200874F96 /* MingdalartTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D920D5C2F233A8200874F96 /* Build configuration list for PBXNativeTarget "MingdalartTests" */;
+			buildPhases = (
+				5D920D502F233A8200874F96 /* Sources */,
+				5D920D512F233A8200874F96 /* Frameworks */,
+				5D920D522F233A8200874F96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D920D592F233A8200874F96 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5D920D552F233A8200874F96 /* MingdalartTests */,
+			);
+			name = MingdalartTests;
+			packageProductDependencies = (
+			);
+			productName = MingdalartTests;
+			productReference = 5D920D542F233A8200874F96 /* MingdalartTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5DF74BEE2F0E3F4E005E589C /* Mingdalart */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5DF74BFA2F0E3F50005E589C /* Build configuration list for PBXNativeTarget "Mingdalart" */;
@@ -286,6 +337,10 @@
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					5D920D532F233A8200874F96 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 5DF74BEE2F0E3F4E005E589C;
+					};
 					5DF74BEE2F0E3F4E005E589C = {
 						CreatedOnToolsVersion = 26.2;
 					};
@@ -306,11 +361,19 @@
 			projectRoot = "";
 			targets = (
 				5DF74BEE2F0E3F4E005E589C /* Mingdalart */,
+				5D920D532F233A8200874F96 /* MingdalartTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5D920D522F233A8200874F96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DF74BED2F0E3F4E005E589C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,6 +385,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D920D502F233A8200874F96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5DF74BEB2F0E3F4E005E589C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,7 +421,62 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5D920D592F233A8200874F96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5DF74BEE2F0E3F4E005E589C /* Mingdalart */;
+			targetProxy = 5D920D582F233A8200874F96 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5D920D5A2F233A8200874F96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8N7PD4AXR6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.cys.MingdalartTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mingdalart.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mingdalart";
+			};
+			name = Debug;
+		};
+		5D920D5B2F233A8200874F96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8N7PD4AXR6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.cys.MingdalartTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mingdalart.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mingdalart";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		5DF74BF82F0E3F50005E589C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -561,6 +686,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D920D5C2F233A8200874F96 /* Build configuration list for PBXNativeTarget "MingdalartTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D920D5A2F233A8200874F96 /* Debug */,
+				5D920D5B2F233A8200874F96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5DF74BEA2F0E3F4E005E589C /* Build configuration list for PBXProject "Mingdalart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
