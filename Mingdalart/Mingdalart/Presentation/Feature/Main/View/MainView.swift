@@ -16,14 +16,17 @@ struct MainView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            MandalaGridView(
-                cells: viewModel.orderedCells,
-                onSelect: { cell in
-                    // 셀 탭 시 편집 시트를 띄운다.
-                    editingCell = cell
-                }
-            )
+        VStack(spacing: 12) {
+            ProgressView(value: viewModel.completionRate)
+            Text("\(Int(viewModel.completionRate * 100))%")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            
+            MandalaGridView(cells: viewModel.orderedCells, onTap: { cell in
+                editingCell = cell
+            }, onLongPressGesture: { cell in
+                viewModel.toggleCompletion(index: cell.index)
+            })
             .padding(.top, 20)
             .padding(.horizontal, 4)
         }

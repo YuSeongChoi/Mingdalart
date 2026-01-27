@@ -16,6 +16,14 @@ struct MandalaCellView: View {
             Rectangle()
                 .fill(cell.role.backgroundColor)
 
+            if cell.isDone {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.green)
+                    .font(.caption)
+                    .padding(4)
+                    .position(x: size - 12, y: 12)
+            }
+            
             Text(displayText)
                 .font(cell.role.font)
                 .foregroundStyle(cell.role.textColor)

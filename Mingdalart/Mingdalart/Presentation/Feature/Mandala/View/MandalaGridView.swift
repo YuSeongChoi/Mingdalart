@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct MandalaGridView: View {
-    private let gridCount: Int = MandalaRule.gridCount
-    let cells: [MandalaCell]
-    let onSelect: (MandalaCell) -> Void
     @State private var scale: CGFloat = 1.0
     @State private var lastScale: CGFloat = 1.0
     @State private var offset: CGSize = .zero
     @State private var lastOffset: CGSize = .zero
+    
+    private let gridCount: Int = MandalaRule.gridCount
     private let minScale: CGFloat = 1.0
     private let maxScale: CGFloat = 1.8
+    
+    let cells: [MandalaCell]
+    let onTap: (MandalaCell) -> Void
+    let onLongPressGesture: (MandalaCell) -> Void
 
     var body: some View {
         GeometryReader { proxy in
@@ -37,7 +40,10 @@ struct MandalaGridView: View {
                         MandalaCellView(cell: cellItem, size: cell)
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                onSelect(cellItem)
+                                onTap(cellItem)
+                            }
+                            .onLongPressGesture {
+                                onLongPressGesture(cellItem)
                             }
                     }
                 }
