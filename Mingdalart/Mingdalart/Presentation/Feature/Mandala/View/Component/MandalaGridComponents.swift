@@ -10,12 +10,30 @@ import SwiftUI
 struct MandalaCellView: View {
     let cell: MandalaCell
     let size: CGFloat
+    
+    private let baseShadow = MandalaPalette.cellShadow.opacity(0.18)
+    private let doneHighlight = MandalaPalette.doneHighlight
+    private let doneAccent = MandalaPalette.doneAccent
 
     var body: some View {
         ZStack {
-            Rectangle()
+            RoundedRectangle(cornerRadius: size * 0.1, style: .continuous)
                 .fill(cell.role.backgroundColor)
+                .overlay(
+                    RoundedRectangle(cornerRadius: size * 0.1, style: .continuous)
+                        .fill(cell.isDone ? doneHighlight.opacity(0.1) : .clear)
+                )
+                .shadow(color: baseShadow, radius: 3, x: 0, y: 1)
 
+            if cell.isDone {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(doneAccent)
+                    .font(.caption2)
+                    .padding(4)
+                    .position(x: size - 12, y: 12)
+                    .transition(.scale.combined(with: .opacity))
+            }
+            
             Text(displayText)
                 .font(cell.role.font)
                 .foregroundStyle(cell.role.textColor)
@@ -26,6 +44,7 @@ struct MandalaCellView: View {
                 .allowsTightening(true)
         }
         .frame(width: size, height: size)
+        .animation(.easeInOut(duration: 0.2), value: cell.isDone)
     }
 
     private var displayText: String {
