@@ -56,7 +56,7 @@ struct MainView: View {
             MandalaEditorSheet(cell: cell) { text in
                 viewModel.updateCellText(index: cell.index, text: text)
             }
-            .presentationDetents([.fraction(0.35)])
+            .presentationDetents([.fraction(0.4)])
             .presentationDragIndicator(.visible)
         }
     }
