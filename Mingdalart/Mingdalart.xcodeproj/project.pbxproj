@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5D920D6C2F27507C00874F96 /* ToggleCellCompletionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */; };
 		5D920D6E2F285D1500874F96 /* CalculateCompletionRateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */; };
+		5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6F2F28942C00874F96 /* MandalaPalette.swift */; };
 		5DECFD7B2F21F32100D69A9B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD582F21F32100D69A9B /* AppEnvironment.swift */; };
 		5DECFD7C2F21F32100D69A9B /* MingdalartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD592F21F32100D69A9B /* MingdalartApp.swift */; };
 		5DECFD7D2F21F32100D69A9B /* MandalaBoardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */; };
@@ -46,6 +47,7 @@
 		5D920D542F233A8200874F96 /* MingdalartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MingdalartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCellCompletionUseCase.swift; sourceTree = "<group>"; };
 		5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCompletionRateUseCase.swift; sourceTree = "<group>"; };
+		5D920D6F2F28942C00874F96 /* MandalaPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaPalette.swift; sourceTree = "<group>"; };
 		5DECFD562F21F32100D69A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DECFD582F21F32100D69A9B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		5DECFD592F21F32100D69A9B /* MingdalartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartApp.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				5DECFD772F21F32100D69A9B /* MandalaRole+Style.swift */,
+				5D920D6F2F28942C00874F96 /* MandalaPalette.swift */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				5DECFD832F21F32100D69A9B /* MandalaRule.swift in Sources */,
 				5DECFD842F21F32100D69A9B /* MandalaRepository.swift in Sources */,
 				5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */,
+				5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */,
 				5DECFD862F21F32100D69A9B /* MainView.swift in Sources */,
 				5DECFD872F21F32100D69A9B /* MandalaEditorSheet.swift in Sources */,
 				5DECFD882F21F32100D69A9B /* MandalaGridComponents.swift in Sources */,

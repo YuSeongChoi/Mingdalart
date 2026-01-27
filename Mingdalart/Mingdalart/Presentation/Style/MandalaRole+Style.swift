@@ -23,23 +23,22 @@ extension MandalaRole {
     var backgroundColor: Color {
         switch self {
         case .main:
-            // 다크모드에서도 대비가 유지되는 시스템 색상 사용.
-            return Color(.systemYellow).opacity(0.85)
+            return MandalaPalette.mainPeach
         case .subGoal:
-            return Color(.systemTeal).opacity(0.25)
+            return MandalaPalette.subGoalMint
         case .task:
-            return Color(.secondarySystemBackground)
+            return MandalaPalette.taskCream
         }
     }
 
     var textColor: Color {
         switch self {
         case .main:
-            return Color(.label)
+            return MandalaPalette.cellText
         case .subGoal:
-            return Color(.label)
+            return MandalaPalette.cellText
         case .task:
-            return Color(.label)
+            return MandalaPalette.cellText
         }
     }
 }

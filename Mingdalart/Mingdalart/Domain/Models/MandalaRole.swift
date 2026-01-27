@@ -16,11 +16,11 @@ enum MandalaRole: Int, Codable, Hashable, Sendable {
     var description: String {
         switch self {
         case .main:
-            return "Main Goal"
+            return "메인 목표"
         case .subGoal:
-            return "Sub Goal"
+            return "서브 목표"
         case .task:
-            return "Task"
+            return "과제"
         }
     }
 }

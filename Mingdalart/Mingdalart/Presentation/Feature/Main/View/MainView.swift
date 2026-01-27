@@ -10,6 +10,9 @@ import SwiftUI
 struct MainView: View {
     @State private var viewModel: MandalaViewModel
     @State private var editingCell: MandalaCell?
+    private let backgroundColor = MandalaPalette.backgroundCream
+    private let accentColor = MandalaPalette.warmBeige
+    private let secondaryTextColor = MandalaPalette.cocoaText
     
     init(viewModel: MandalaViewModel) {
         _viewModel = .init(initialValue: viewModel)
@@ -17,10 +20,23 @@ struct MainView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            ProgressView(value: viewModel.completionRate)
-            Text("\(Int(viewModel.completionRate * 100))%")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+            VStack(alignment: .leading, spacing: 6) {
+                Text("오늘도 한 칸씩, 천천히 🐹")
+                    .font(.subheadline)
+                    .foregroundStyle(secondaryTextColor)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(progressHeadline)
+                        .font(.caption)
+                        .foregroundStyle(secondaryTextColor)
+                    ProgressView(value: viewModel.completionRate)
+                        .tint(accentColor)
+                    Text("지금까지 \(Int(viewModel.completionRate * 100))% 채웠어요")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 12)
             
             MandalaGridView(cells: viewModel.orderedCells, onTap: { cell in
                 editingCell = cell
@@ -29,15 +45,33 @@ struct MainView: View {
             })
             .padding(.top, 20)
             .padding(.horizontal, 4)
+            
+            Spacer()
         }
         .task {
             viewModel.load()
         }
-        .background(Color(.systemBackground))
+        .background(backgroundColor)
         .sheet(item: $editingCell) { cell in
             MandalaEditorSheet(cell: cell) { text in
                 viewModel.updateCellText(index: cell.index, text: text)
             }
+        }
+    }
+
+    private var progressHeadline: String {
+        let rate = viewModel.completionRate
+        switch rate {
+        case 0:
+            return "첫 칸을 채울 준비가 됐어요"
+        case 0..<0.3:
+            return "천천히, 몽글몽글 채우는 중"
+        case 0..<0.7:
+            return "좋아요! 꾸준히 쌓이고 있어요"
+        case 0..<1.0:
+            return "거의 다 왔어요, 조금만 더"
+        default:
+            return "완성! 오늘도 정말 멋져요"
         }
     }
 }
