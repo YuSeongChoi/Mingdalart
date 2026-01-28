@@ -19,7 +19,6 @@ struct MandalaGridView: View {
     
     let cells: [MandalaCell]
     let onTap: (MandalaCell) -> Void
-    let onLongPressGesture: (MandalaCell) -> Void
 
     var body: some View {
         GeometryReader { proxy in
@@ -43,9 +42,6 @@ struct MandalaGridView: View {
                             .contentShape(Rectangle())
                             .onTapGesture {
                                 onTap(cellItem)
-                            }
-                            .onLongPressGesture {
-                                onLongPressGesture(cellItem)
                             }
                     }
                 }

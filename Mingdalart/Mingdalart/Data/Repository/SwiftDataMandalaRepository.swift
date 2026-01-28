@@ -35,11 +35,15 @@ final class SwiftDataMandalaRepository: MandalaRepository {
         if let existing = boardEntity.cells.first(where: { $0.index == cell.index }) {
             existing.text = cell.text
             existing.role = cell.role
+            existing.isDone = cell.isDone
+            existing.doneAt = cell.doneAt
         } else {
             let newCell = MandalaCellEntity(
                 index: cell.index,
                 text: cell.text,
                 role: cell.role,
+                isDone: cell.isDone,
+                doneAt: cell.doneAt,
                 board: boardEntity
             )
             boardEntity.cells.append(newCell)
@@ -72,12 +76,16 @@ final class SwiftDataMandalaRepository: MandalaRepository {
             if let existing = existingByIndex[cell.index] {
                 existing.text = cell.text
                 existing.role = cell.role
+                existing.isDone = cell.isDone
+                existing.doneAt = cell.doneAt
                 updatedCells.append(existing)
             } else {
                 let newCell = MandalaCellEntity(
                     index: cell.index,
                     text: cell.text,
                     role: cell.role,
+                    isDone: cell.isDone,
+                    doneAt: cell.doneAt,
                     board: entity
                 )
                 updatedCells.append(newCell)
@@ -93,7 +101,13 @@ final class SwiftDataMandalaRepository: MandalaRepository {
 extension SwiftDataMandalaRepository {
     private func toDomain(_ entity: MandalaBoardEntity) -> MandalaBoard {
         let cells = entity.cells.map { cell in
-            MandalaCell(index: cell.index, text: cell.text, role: cell.role)
+            MandalaCell(
+                index: cell.index,
+                text: cell.text,
+                role: cell.role,
+                isDone: cell.isDone,
+                doneAt: cell.doneAt
+            )
         }
         return MandalaBoard(title: entity.title, cells: cells)
     }
