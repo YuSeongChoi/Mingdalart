@@ -1,0 +1,9 @@
+# 코드 소유자 설정
+# Pull Request 생성시 자동으로 리뷰어 추천됨
+
+# 전체 repo 담당
+* @YuSeongChoi
+
+# 특정 디렉토리 담당
+/.github/ @YuSeongChoi
+/Mingdalart/App/ @YuSeongChoi
