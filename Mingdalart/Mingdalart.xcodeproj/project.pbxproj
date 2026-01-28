@@ -10,6 +10,28 @@
 		5D920D6C2F27507C00874F96 /* ToggleCellCompletionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */; };
 		5D920D6E2F285D1500874F96 /* CalculateCompletionRateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */; };
 		5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6F2F28942C00874F96 /* MandalaPalette.swift */; };
+		5D920D902F29CB6A00874F96 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D8A2F29CB6A00874F96 /* Lato-Light.ttf */; };
+		5D920D912F29CB6A00874F96 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D7F2F29CB6A00874F96 /* Lato-Thin.ttf */; };
+		5D920D922F29CB6A00874F96 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D7E2F29CB6A00874F96 /* Lato-LightItalic.ttf */; };
+		5D920D932F29CB6A00874F96 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D802F29CB6A00874F96 /* Lato-Bold.ttf */; };
+		5D920D942F29CB6A00874F96 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D862F29CB6A00874F96 /* Lato-BlackItalic.ttf */; };
+		5D920D952F29CB6A00874F96 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D822F29CB6A00874F96 /* Pretendard-Regular.otf */; };
+		5D920D962F29CB6A00874F96 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D882F29CB6A00874F96 /* Lato-BoldItalic.ttf */; };
+		5D920D972F29CB6A00874F96 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D7D2F29CB6A00874F96 /* Lato-Italic.ttf */; };
+		5D920D982F29CB6A00874F96 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D8E2F29CB6A00874F96 /* Pretendard-SemiBold.otf */; };
+		5D920D992F29CB6A00874F96 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D852F29CB6A00874F96 /* Lato-Regular.ttf */; };
+		5D920D9A2F29CB6A00874F96 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D842F29CB6A00874F96 /* NotoSansCJKkr-Medium.otf */; };
+		5D920D9B2F29CB6A00874F96 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D892F29CB6A00874F96 /* Pretendard-Bold.otf */; };
+		5D920D9C2F29CB6A00874F96 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D8B2F29CB6A00874F96 /* Lato-ThinItalic.ttf */; };
+		5D920D9D2F29CB6A00874F96 /* NotoSans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D832F29CB6A00874F96 /* NotoSans-Bold.otf */; };
+		5D920D9E2F29CB6A00874F96 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D8C2F29CB6A00874F96 /* NotoSansCJKkr-Regular.otf */; };
+		5D920D9F2F29CB6A00874F96 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D812F29CB6A00874F96 /* Lato-Black.ttf */; };
+		5D920DA02F29CB6A00874F96 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D872F29CB6A00874F96 /* Pretendard-Medium.otf */; };
+		5D920DA12F29CB6A00874F96 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D8D2F29CB6A00874F96 /* NotoSansCJKkr-Bold.otf */; };
+		5D920DA42F29CD3B00874F96 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 5D920DA32F29CD3B00874F96 /* RswiftLibrary */; };
+		5D920DB12F29CDC600874F96 /* MingdalartResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DB02F29CDC600874F96 /* MingdalartResources.swift */; };
+		5D920DCC2F29D6B000874F96 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */; };
+		5D920DD32F29D75E00874F96 /* Rswift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */; };
 		5DECFD7B2F21F32100D69A9B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD582F21F32100D69A9B /* AppEnvironment.swift */; };
 		5DECFD7C2F21F32100D69A9B /* MingdalartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD592F21F32100D69A9B /* MingdalartApp.swift */; };
 		5DECFD7D2F21F32100D69A9B /* MandalaBoardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */; };
@@ -48,6 +70,27 @@
 		5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCellCompletionUseCase.swift; sourceTree = "<group>"; };
 		5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCompletionRateUseCase.swift; sourceTree = "<group>"; };
 		5D920D6F2F28942C00874F96 /* MandalaPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaPalette.swift; sourceTree = "<group>"; };
+		5D920D7D2F29CB6A00874F96 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
+		5D920D7E2F29CB6A00874F96 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		5D920D7F2F29CB6A00874F96 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Thin.ttf"; sourceTree = "<group>"; };
+		5D920D802F29CB6A00874F96 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		5D920D812F29CB6A00874F96 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		5D920D822F29CB6A00874F96 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		5D920D832F29CB6A00874F96 /* NotoSans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.otf"; sourceTree = "<group>"; };
+		5D920D842F29CB6A00874F96 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		5D920D852F29CB6A00874F96 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		5D920D862F29CB6A00874F96 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		5D920D872F29CB6A00874F96 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		5D920D882F29CB6A00874F96 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		5D920D892F29CB6A00874F96 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		5D920D8A2F29CB6A00874F96 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		5D920D8B2F29CB6A00874F96 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		5D920D8C2F29CB6A00874F96 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		5D920D8D2F29CB6A00874F96 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
+		5D920D8E2F29CB6A00874F96 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		5D920DB02F29CDC600874F96 /* MingdalartResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartResources.swift; sourceTree = "<group>"; };
+		5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
+		5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rswift+Extension.swift"; sourceTree = "<group>"; };
 		5DECFD562F21F32100D69A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DECFD582F21F32100D69A9B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		5DECFD592F21F32100D69A9B /* MingdalartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartApp.swift; sourceTree = "<group>"; };
@@ -92,16 +135,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D920DA42F29CD3B00874F96 /* RswiftLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D920D8F2F29CB6A00874F96 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5D920D7D2F29CB6A00874F96 /* Lato-Italic.ttf */,
+				5D920D7E2F29CB6A00874F96 /* Lato-LightItalic.ttf */,
+				5D920D7F2F29CB6A00874F96 /* Lato-Thin.ttf */,
+				5D920D802F29CB6A00874F96 /* Lato-Bold.ttf */,
+				5D920D812F29CB6A00874F96 /* Lato-Black.ttf */,
+				5D920D822F29CB6A00874F96 /* Pretendard-Regular.otf */,
+				5D920D832F29CB6A00874F96 /* NotoSans-Bold.otf */,
+				5D920D842F29CB6A00874F96 /* NotoSansCJKkr-Medium.otf */,
+				5D920D852F29CB6A00874F96 /* Lato-Regular.ttf */,
+				5D920D862F29CB6A00874F96 /* Lato-BlackItalic.ttf */,
+				5D920D872F29CB6A00874F96 /* Pretendard-Medium.otf */,
+				5D920D882F29CB6A00874F96 /* Lato-BoldItalic.ttf */,
+				5D920D892F29CB6A00874F96 /* Pretendard-Bold.otf */,
+				5D920D8A2F29CB6A00874F96 /* Lato-Light.ttf */,
+				5D920D8B2F29CB6A00874F96 /* Lato-ThinItalic.ttf */,
+				5D920D8C2F29CB6A00874F96 /* NotoSansCJKkr-Regular.otf */,
+				5D920D8D2F29CB6A00874F96 /* NotoSansCJKkr-Bold.otf */,
+				5D920D8E2F29CB6A00874F96 /* Pretendard-SemiBold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		5D920DC72F29D69A00874F96 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5DECFD572F21F32100D69A9B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5D920D8F2F29CB6A00874F96 /* Font */,
 				5DECFD562F21F32100D69A9B /* Assets.xcassets */,
+				5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */,
+				5D920DB02F29CDC600874F96 /* MingdalartResources.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -256,6 +336,7 @@
 		5DECFD792F21F32100D69A9B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5D920DC72F29D69A00874F96 /* Utils */,
 				5DECFD762F21F32100D69A9B /* Feature */,
 				5DECFD782F21F32100D69A9B /* Style */,
 			);
@@ -328,9 +409,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				5D920DA62F29CD7A00874F96 /* PBXTargetDependency */,
 			);
 			name = Mingdalart;
 			packageProductDependencies = (
+				5D920DA32F29CD3B00874F96 /* RswiftLibrary */,
 			);
 			productName = Mingdalart;
 			productReference = 5DF74BEF2F0E3F4E005E589C /* Mingdalart.app */;
@@ -364,6 +447,9 @@
 			);
 			mainGroup = 5DF74BE62F0E3F4E005E589C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5D920DA22F29CD3B00874F96 /* XCRemoteSwiftPackageReference "R" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5DF74BF02F0E3F4E005E589C /* Products */;
 			projectDirPath = "";
@@ -388,6 +474,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DECFD8C2F21F32100D69A9B /* Assets.xcassets in Resources */,
+				5D920D902F29CB6A00874F96 /* Lato-Light.ttf in Resources */,
+				5D920D912F29CB6A00874F96 /* Lato-Thin.ttf in Resources */,
+				5D920D922F29CB6A00874F96 /* Lato-LightItalic.ttf in Resources */,
+				5D920D932F29CB6A00874F96 /* Lato-Bold.ttf in Resources */,
+				5D920D942F29CB6A00874F96 /* Lato-BlackItalic.ttf in Resources */,
+				5D920D952F29CB6A00874F96 /* Pretendard-Regular.otf in Resources */,
+				5D920D962F29CB6A00874F96 /* Lato-BoldItalic.ttf in Resources */,
+				5D920D972F29CB6A00874F96 /* Lato-Italic.ttf in Resources */,
+				5D920D982F29CB6A00874F96 /* Pretendard-SemiBold.otf in Resources */,
+				5D920D992F29CB6A00874F96 /* Lato-Regular.ttf in Resources */,
+				5D920D9A2F29CB6A00874F96 /* NotoSansCJKkr-Medium.otf in Resources */,
+				5D920D9B2F29CB6A00874F96 /* Pretendard-Bold.otf in Resources */,
+				5D920D9C2F29CB6A00874F96 /* Lato-ThinItalic.ttf in Resources */,
+				5D920D9D2F29CB6A00874F96 /* NotoSans-Bold.otf in Resources */,
+				5D920D9E2F29CB6A00874F96 /* NotoSansCJKkr-Regular.otf in Resources */,
+				5D920D9F2F29CB6A00874F96 /* Lato-Black.ttf in Resources */,
+				5D920DA02F29CB6A00874F96 /* Pretendard-Medium.otf in Resources */,
+				5D920DA12F29CB6A00874F96 /* NotoSansCJKkr-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,10 +519,13 @@
 				5D920D6C2F27507C00874F96 /* ToggleCellCompletionUseCase.swift in Sources */,
 				5DECFD902F21F78500D69A9B /* UpdateCellTextUseCase.swift in Sources */,
 				5DECFD802F21F32100D69A9B /* MandalaBoard.swift in Sources */,
+				5D920DB12F29CDC600874F96 /* MingdalartResources.swift in Sources */,
 				5DECFD812F21F32100D69A9B /* MandalaCell.swift in Sources */,
 				5DECFD822F21F32100D69A9B /* MandalaRole.swift in Sources */,
 				5DECFD832F21F32100D69A9B /* MandalaRule.swift in Sources */,
 				5DECFD842F21F32100D69A9B /* MandalaRepository.swift in Sources */,
+				5D920DCC2F29D6B000874F96 /* SwiftUI+Extension.swift in Sources */,
+				5D920DD32F29D75E00874F96 /* Rswift+Extension.swift in Sources */,
 				5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */,
 				5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */,
 				5DECFD862F21F32100D69A9B /* MainView.swift in Sources */,
@@ -438,6 +545,10 @@
 			isa = PBXTargetDependency;
 			target = 5DF74BEE2F0E3F4E005E589C /* Mingdalart */;
 			targetProxy = 5D920D582F233A8200874F96 /* PBXContainerItemProxy */;
+		};
+		5D920DA62F29CD7A00874F96 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5D920DA52F29CD7A00874F96 /* RswiftGenerateInternalResources */;
 		};
 /* End PBXTargetDependency section */
 
@@ -730,6 +841,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D920DA22F29CD3B00874F96 /* XCRemoteSwiftPackageReference "R" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-cain13/R.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D920DA32F29CD3B00874F96 /* RswiftLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D920DA22F29CD3B00874F96 /* XCRemoteSwiftPackageReference "R" */;
+			productName = RswiftLibrary;
+		};
+		5D920DA52F29CD7A00874F96 /* RswiftGenerateInternalResources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "plugin:RswiftGenerateInternalResources";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DF74BE72F0E3F4E005E589C /* Project object */;
 }
