@@ -26,18 +26,13 @@ final class MandalaViewModel {
         board = useCase.loadBoard()
     }
 
-    func updateCellText(index: Int, text: String) {
+    func updateCellText(index: Int, text: String, isDone: Bool? = nil) {
         guard let board else { return }
-        self.board = useCase.updateCellText(board: board, index: index, text: text)
+        self.board = useCase.updateCellText(board: board, index: index, text: text, isDone: isDone)
     }
 
     // 9x9 셀을 인덱스 순서대로 정렬해 그리드와 매칭한다.
     var orderedCells: [MandalaCell] {
         board?.cells.sorted { $0.index < $1.index } ?? []
-    }
-    
-    func toggleCompletion(index: Int) {
-        guard let board else { return }
-        self.board = useCase.toggleCompletion(board: board, index: index)
     }
 }

@@ -24,25 +24,31 @@ struct MainView: View {
                 Text("오늘도 한 칸씩, 천천히 🐹")
                     .font(.subheadline)
                     .foregroundStyle(secondaryTextColor)
+                
                 VStack(alignment: .leading, spacing: 4) {
                     Text(progressHeadline)
                         .font(.caption)
                         .foregroundStyle(secondaryTextColor)
+                        .contentTransition(.opacity)
+                    
                     ProgressView(value: viewModel.completionRate)
                         .tint(accentColor)
+                        .animation(.easeInOut(duration: 0.25), value: viewModel.completionRate)
+                    
                     Text("지금까지 \(Int(viewModel.completionRate * 100))% 채웠어요")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
+                        .contentTransition(.numericText())
                 }
+                .animation(.easeInOut(duration: 0.2), value: viewModel.completionRate)
             }
             .padding(.horizontal, 16)
             .padding(.top, 12)
             
-            MandalaGridView(cells: viewModel.orderedCells, onTap: { cell in
+            
+            MandalaGridView(cells: viewModel.orderedCells) { cell in
                 editingCell = cell
-            }, onLongPressGesture: { cell in
-                viewModel.toggleCompletion(index: cell.index)
-            })
+            }
             .padding(.top, 20)
             .padding(.horizontal, 4)
             
@@ -53,13 +59,15 @@ struct MainView: View {
         }
         .background(backgroundColor)
         .sheet(item: $editingCell) { cell in
-            MandalaEditorSheet(cell: cell) { text in
-                viewModel.updateCellText(index: cell.index, text: text)
+            MandalaEditorSheet(cell: cell) { text, isDone in
+                viewModel.updateCellText(index: cell.index, text: text, isDone: isDone)
             }
             .presentationDetents([.fraction(0.4)])
             .presentationDragIndicator(.visible)
         }
     }
+
+    
 
     private var progressHeadline: String {
         let rate = viewModel.completionRate

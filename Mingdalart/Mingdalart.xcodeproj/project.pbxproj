@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D920D6C2F27507C00874F96 /* ToggleCellCompletionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */; };
 		5D920D6E2F285D1500874F96 /* CalculateCompletionRateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */; };
 		5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920D6F2F28942C00874F96 /* MandalaPalette.swift */; };
 		5D920D902F29CB6A00874F96 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D920D8A2F29CB6A00874F96 /* Lato-Light.ttf */; };
@@ -67,7 +66,6 @@
 
 /* Begin PBXFileReference section */
 		5D920D542F233A8200874F96 /* MingdalartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MingdalartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCellCompletionUseCase.swift; sourceTree = "<group>"; };
 		5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateCompletionRateUseCase.swift; sourceTree = "<group>"; };
 		5D920D6F2F28942C00874F96 /* MandalaPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaPalette.swift; sourceTree = "<group>"; };
 		5D920D7D2F29CB6A00874F96 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
@@ -248,7 +246,6 @@
 				5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */,
 				5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */,
 				5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */,
-				5D920D6B2F27507C00874F96 /* ToggleCellCompletionUseCase.swift */,
 				5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */,
 			);
 			path = UseCases;
@@ -347,9 +344,9 @@
 			isa = PBXGroup;
 			children = (
 				5DECFD5A2F21F32100D69A9B /* App */,
-				5DECFD602F21F32100D69A9B /* Data */,
-				5DECFD6A2F21F32100D69A9B /* Domain */,
 				5DECFD792F21F32100D69A9B /* Presentation */,
+				5DECFD6A2F21F32100D69A9B /* Domain */,
+				5DECFD602F21F32100D69A9B /* Data */,
 			);
 			path = Mingdalart;
 			sourceTree = "<group>";
@@ -516,7 +513,6 @@
 				5DECFD7E2F21F32100D69A9B /* MandalaCellEntity.swift in Sources */,
 				5DECFD7F2F21F32100D69A9B /* SwiftDataMandalaRepository.swift in Sources */,
 				5D920D6E2F285D1500874F96 /* CalculateCompletionRateUseCase.swift in Sources */,
-				5D920D6C2F27507C00874F96 /* ToggleCellCompletionUseCase.swift in Sources */,
 				5DECFD902F21F78500D69A9B /* UpdateCellTextUseCase.swift in Sources */,
 				5DECFD802F21F32100D69A9B /* MandalaBoard.swift in Sources */,
 				5D920DB12F29CDC600874F96 /* MingdalartResources.swift in Sources */,

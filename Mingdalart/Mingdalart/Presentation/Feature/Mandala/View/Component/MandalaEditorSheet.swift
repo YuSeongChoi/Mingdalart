@@ -10,18 +10,21 @@ import SwiftUI
 struct MandalaEditorSheet: View {
     @Environment(\.dismiss) private var dismiss
     let cell: MandalaCell
-    let onSave: (String) -> Void
+    let onSave: (String, Bool) -> Void
     @State private var text: String
+    @State private var isDone: Bool
+    
     private let maxTextLength = 20
     private let backgroundCream = MandalaPalette.backgroundCream
     private let cardShadow = MandalaPalette.cellShadow.opacity(0.18)
     private let accent = MandalaPalette.warmBeige
     private let secondaryText = MandalaPalette.cocoaText
 
-    init(cell: MandalaCell, onSave: @escaping (String) -> Void) {
+    init(cell: MandalaCell, onSave: @escaping (String, Bool) -> Void) {
         self.cell = cell
         self.onSave = onSave
         _text = State(initialValue: cell.text)
+        _isDone = State(initialValue: cell.isDone)
     }
 
     var body: some View {
@@ -31,14 +34,31 @@ struct MandalaEditorSheet: View {
 
             VStack {
                 VStack(alignment: .leading, spacing: 12) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("이 칸에 무엇을 적어볼까요?")
-                            .font(.headline)
-                            .foregroundStyle(secondaryText)
+                    HStack {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("이 칸에 무엇을 적어볼까요?")
+                                .font(.headline)
+                                .foregroundStyle(secondaryText)
 
-                        Text(cell.role.description)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            Text(cell.role.description)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                        Spacer()
+                        
+                        if cell.role == .task {
+                            Button {
+                                isDone.toggle()
+                            } label: {
+                                if isDone {
+                                    Image(systemName: "checkmark.circle.fill")
+                                } else {
+                                    Image(systemName: "checkmark.circle")
+                                }
+                            }
+                            .foregroundStyle(MandalaPalette.doneAccent)
+                        }
                     }
 
                     // 엔터 없이 한 줄만 입력되도록 하고, 20자 제한을 둔다.
@@ -66,7 +86,7 @@ struct MandalaEditorSheet: View {
                     }
 
                     Button {
-                        onSave(text)
+                        onSave(text, isDone)
                         dismiss()
                     } label: {
                         Text("적어두기")
@@ -88,9 +108,4 @@ struct MandalaEditorSheet: View {
             }
         }
     }
-}
-
-#Preview {
-    let cell = MandalaCell(index: 40, text: "Main Goal", role: .main)
-    return MandalaEditorSheet(cell: cell) { _ in }
 }
