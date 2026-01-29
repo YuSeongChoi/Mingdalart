@@ -31,6 +31,13 @@
 		5D920DB12F29CDC600874F96 /* MingdalartResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DB02F29CDC600874F96 /* MingdalartResources.swift */; };
 		5D920DCC2F29D6B000874F96 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */; };
 		5D920DD32F29D75E00874F96 /* Rswift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */; };
+		5D920E5E2F2B33DF00874F96 /* DailyTaskEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E5D2F2B33DF00874F96 /* DailyTaskEntity.swift */; };
+		5D920E612F2B343800874F96 /* SwiftDataDailyTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E602F2B343800874F96 /* SwiftDataDailyTaskRepository.swift */; };
+		5D920E662F2B385600874F96 /* DailyTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E652F2B385600874F96 /* DailyTaskRepository.swift */; };
+		5D920E762F2B39CB00874F96 /* LoadDailyTasksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E752F2B39CB00874F96 /* LoadDailyTasksUseCase.swift */; };
+		5D920E7A2F2B39F100874F96 /* SaveDailyTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E792F2B39F100874F96 /* SaveDailyTaskUseCase.swift */; };
+		5D920E7E2F2B3A1600874F96 /* DeleteDailyTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E7D2F2B3A1600874F96 /* DeleteDailyTaskUseCase.swift */; };
+		5D920E822F2B3A5900874F96 /* DailyTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E812F2B3A5900874F96 /* DailyTaskUseCase.swift */; };
 		5DCCAA102F2B100100874F96 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA0F2F2B100100874F96 /* MainTabView.swift */; };
 		5DCCAA122F2B100100874F96 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA112F2B100100874F96 /* CalendarView.swift */; };
 		5DCCAA142F2B100100874F96 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */; };
@@ -93,6 +100,13 @@
 		5D920DB02F29CDC600874F96 /* MingdalartResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartResources.swift; sourceTree = "<group>"; };
 		5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
 		5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rswift+Extension.swift"; sourceTree = "<group>"; };
+		5D920E5D2F2B33DF00874F96 /* DailyTaskEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskEntity.swift; sourceTree = "<group>"; };
+		5D920E602F2B343800874F96 /* SwiftDataDailyTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataDailyTaskRepository.swift; sourceTree = "<group>"; };
+		5D920E652F2B385600874F96 /* DailyTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskRepository.swift; sourceTree = "<group>"; };
+		5D920E752F2B39CB00874F96 /* LoadDailyTasksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDailyTasksUseCase.swift; sourceTree = "<group>"; };
+		5D920E792F2B39F100874F96 /* SaveDailyTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDailyTaskUseCase.swift; sourceTree = "<group>"; };
+		5D920E7D2F2B3A1600874F96 /* DeleteDailyTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDailyTaskUseCase.swift; sourceTree = "<group>"; };
+		5D920E812F2B3A5900874F96 /* DailyTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskUseCase.swift; sourceTree = "<group>"; };
 		5DCCAA0F2F2B100100874F96 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5DCCAA112F2B100100874F96 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +195,29 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		5D920E682F2B39B500874F96 /* Mandala */ = {
+			isa = PBXGroup;
+			children = (
+				5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */,
+				5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */,
+				5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */,
+				5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */,
+				5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */,
+			);
+			path = Mandala;
+			sourceTree = "<group>";
+		};
+		5D920E6E2F2B39BD00874F96 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				5D920E812F2B3A5900874F96 /* DailyTaskUseCase.swift */,
+				5D920E752F2B39CB00874F96 /* LoadDailyTasksUseCase.swift */,
+				5D920E792F2B39F100874F96 /* SaveDailyTaskUseCase.swift */,
+				5D920E7D2F2B3A1600874F96 /* DeleteDailyTaskUseCase.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		5DCCAA172F2B100100874F96 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +269,7 @@
 			children = (
 				5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */,
 				5DECFD5C2F21F32100D69A9B /* MandalaCellEntity.swift */,
+				5D920E5D2F2B33DF00874F96 /* DailyTaskEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -240,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				5DECFD5E2F21F32100D69A9B /* SwiftDataMandalaRepository.swift */,
+				5D920E602F2B343800874F96 /* SwiftDataDailyTaskRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -269,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				5DECFD662F21F32100D69A9B /* MandalaRepository.swift */,
+				5D920E652F2B385600874F96 /* DailyTaskRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -276,11 +316,8 @@
 		5DECFD692F21F32100D69A9B /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */,
-				5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */,
-				5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */,
-				5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */,
-				5D920D6D2F285D1500874F96 /* CalculateCompletionRateUseCase.swift */,
+				5D920E682F2B39B500874F96 /* Mandala */,
+				5D920E6E2F2B39BD00874F96 /* Task */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -545,8 +582,11 @@
 				5DECFD962F21F9F100D69A9B /* SaveCellUseCase.swift in Sources */,
 				5DECFD7B2F21F32100D69A9B /* AppEnvironment.swift in Sources */,
 				5DECFD7C2F21F32100D69A9B /* MingdalartApp.swift in Sources */,
+				5D920E612F2B343800874F96 /* SwiftDataDailyTaskRepository.swift in Sources */,
 				5DECFD7D2F21F32100D69A9B /* MandalaBoardEntity.swift in Sources */,
+				5D920E762F2B39CB00874F96 /* LoadDailyTasksUseCase.swift in Sources */,
 				5DECFD7E2F21F32100D69A9B /* MandalaCellEntity.swift in Sources */,
+				5D920E7A2F2B39F100874F96 /* SaveDailyTaskUseCase.swift in Sources */,
 				5DECFD7F2F21F32100D69A9B /* SwiftDataMandalaRepository.swift in Sources */,
 				5D920D6E2F285D1500874F96 /* CalculateCompletionRateUseCase.swift in Sources */,
 				5DECFD902F21F78500D69A9B /* UpdateCellTextUseCase.swift in Sources */,
@@ -555,8 +595,10 @@
 				5DECFD812F21F32100D69A9B /* MandalaCell.swift in Sources */,
 				5DECFD822F21F32100D69A9B /* MandalaRole.swift in Sources */,
 				5DECFD832F21F32100D69A9B /* MandalaRule.swift in Sources */,
+				5D920E822F2B3A5900874F96 /* DailyTaskUseCase.swift in Sources */,
 				5DECFD842F21F32100D69A9B /* MandalaRepository.swift in Sources */,
 				5D920DCC2F29D6B000874F96 /* SwiftUI+Extension.swift in Sources */,
+				5D920E7E2F2B3A1600874F96 /* DeleteDailyTaskUseCase.swift in Sources */,
 				5D920DD32F29D75E00874F96 /* Rswift+Extension.swift in Sources */,
 				5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */,
 				5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */,
@@ -567,6 +609,8 @@
 				5DCCAA162F2B100100874F96 /* DailyTask.swift in Sources */,
 				5DECFD872F21F32100D69A9B /* MandalaEditorSheet.swift in Sources */,
 				5DECFD882F21F32100D69A9B /* MandalaGridComponents.swift in Sources */,
+				5D920E662F2B385600874F96 /* DailyTaskRepository.swift in Sources */,
+				5D920E5E2F2B33DF00874F96 /* DailyTaskEntity.swift in Sources */,
 				5DECFD892F21F32100D69A9B /* MandalaGridView.swift in Sources */,
 				5DECFD8A2F21F32100D69A9B /* MandalaViewModel.swift in Sources */,
 				5DECFD8E2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift in Sources */,
