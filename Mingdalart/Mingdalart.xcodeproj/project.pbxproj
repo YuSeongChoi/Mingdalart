@@ -31,6 +31,10 @@
 		5D920DB12F29CDC600874F96 /* MingdalartResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DB02F29CDC600874F96 /* MingdalartResources.swift */; };
 		5D920DCC2F29D6B000874F96 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */; };
 		5D920DD32F29D75E00874F96 /* Rswift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */; };
+		5DCCAA102F2B100100874F96 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA0F2F2B100100874F96 /* MainTabView.swift */; };
+		5DCCAA122F2B100100874F96 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA112F2B100100874F96 /* CalendarView.swift */; };
+		5DCCAA142F2B100100874F96 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */; };
+		5DCCAA162F2B100100874F96 /* DailyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA152F2B100100874F96 /* DailyTask.swift */; };
 		5DECFD7B2F21F32100D69A9B /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD582F21F32100D69A9B /* AppEnvironment.swift */; };
 		5DECFD7C2F21F32100D69A9B /* MingdalartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD592F21F32100D69A9B /* MingdalartApp.swift */; };
 		5DECFD7D2F21F32100D69A9B /* MandalaBoardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD5B2F21F32100D69A9B /* MandalaBoardEntity.swift */; };
@@ -42,7 +46,7 @@
 		5DECFD832F21F32100D69A9B /* MandalaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD642F21F32100D69A9B /* MandalaRule.swift */; };
 		5DECFD842F21F32100D69A9B /* MandalaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD662F21F32100D69A9B /* MandalaRepository.swift */; };
 		5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */; };
-		5DECFD862F21F32100D69A9B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6B2F21F32100D69A9B /* MainView.swift */; };
+		5DECFD862F21F32100D69A9B /* MandalaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6B2F21F32100D69A9B /* MandalaView.swift */; };
 		5DECFD872F21F32100D69A9B /* MandalaEditorSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6E2F21F32100D69A9B /* MandalaEditorSheet.swift */; };
 		5DECFD882F21F32100D69A9B /* MandalaGridComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD6F2F21F32100D69A9B /* MandalaGridComponents.swift */; };
 		5DECFD892F21F32100D69A9B /* MandalaGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD712F21F32100D69A9B /* MandalaGridView.swift */; };
@@ -89,6 +93,10 @@
 		5D920DB02F29CDC600874F96 /* MingdalartResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartResources.swift; sourceTree = "<group>"; };
 		5D920DCB2F29D6B000874F96 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
 		5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rswift+Extension.swift"; sourceTree = "<group>"; };
+		5DCCAA0F2F2B100100874F96 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		5DCCAA112F2B100100874F96 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		5DCCAA152F2B100100874F96 /* DailyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTask.swift; sourceTree = "<group>"; };
 		5DECFD562F21F32100D69A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DECFD582F21F32100D69A9B /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		5DECFD592F21F32100D69A9B /* MingdalartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MingdalartApp.swift; sourceTree = "<group>"; };
@@ -101,7 +109,7 @@
 		5DECFD642F21F32100D69A9B /* MandalaRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaRule.swift; sourceTree = "<group>"; };
 		5DECFD662F21F32100D69A9B /* MandalaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaRepository.swift; sourceTree = "<group>"; };
 		5DECFD682F21F32100D69A9B /* MandalaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaUseCase.swift; sourceTree = "<group>"; };
-		5DECFD6B2F21F32100D69A9B /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5DECFD6B2F21F32100D69A9B /* MandalaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaView.swift; sourceTree = "<group>"; };
 		5DECFD6E2F21F32100D69A9B /* MandalaEditorSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaEditorSheet.swift; sourceTree = "<group>"; };
 		5DECFD6F2F21F32100D69A9B /* MandalaGridComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaGridComponents.swift; sourceTree = "<group>"; };
 		5DECFD712F21F32100D69A9B /* MandalaGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaGridView.swift; sourceTree = "<group>"; };
@@ -173,6 +181,31 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		5DCCAA172F2B100100874F96 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5DCCAA182F2B100100874F96 /* View */,
+				5DCCAA192F2B100100874F96 /* ViewModel */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		5DCCAA182F2B100100874F96 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DCCAA112F2B100100874F96 /* CalendarView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DCCAA192F2B100100874F96 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5DECFD572F21F32100D69A9B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +260,7 @@
 				5DECFD642F21F32100D69A9B /* MandalaRule.swift */,
 				5DECFD612F21F32100D69A9B /* MandalaBoard.swift */,
 				5DECFD622F21F32100D69A9B /* MandalaCell.swift */,
+				5DCCAA152F2B100100874F96 /* DailyTask.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,7 +298,7 @@
 		5DECFD6C2F21F32100D69A9B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5DECFD6B2F21F32100D69A9B /* MainView.swift */,
+				5DCCAA0F2F2B100100874F96 /* MainTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -289,6 +323,7 @@
 		5DECFD722F21F32100D69A9B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5DECFD6B2F21F32100D69A9B /* MandalaView.swift */,
 				5DECFD712F21F32100D69A9B /* MandalaGridView.swift */,
 				5DECFD702F21F32100D69A9B /* Component */,
 			);
@@ -317,6 +352,7 @@
 			children = (
 				5DECFD6D2F21F32100D69A9B /* Main */,
 				5DECFD752F21F32100D69A9B /* Mandala */,
+				5DCCAA172F2B100100874F96 /* Calendar */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -524,7 +560,11 @@
 				5D920DD32F29D75E00874F96 /* Rswift+Extension.swift in Sources */,
 				5DECFD852F21F32100D69A9B /* MandalaUseCase.swift in Sources */,
 				5D920D702F28942C00874F96 /* MandalaPalette.swift in Sources */,
-				5DECFD862F21F32100D69A9B /* MainView.swift in Sources */,
+				5DECFD862F21F32100D69A9B /* MandalaView.swift in Sources */,
+				5DCCAA102F2B100100874F96 /* MainTabView.swift in Sources */,
+				5DCCAA122F2B100100874F96 /* CalendarView.swift in Sources */,
+				5DCCAA142F2B100100874F96 /* CalendarViewModel.swift in Sources */,
+				5DCCAA162F2B100100874F96 /* DailyTask.swift in Sources */,
 				5DECFD872F21F32100D69A9B /* MandalaEditorSheet.swift in Sources */,
 				5DECFD882F21F32100D69A9B /* MandalaGridComponents.swift in Sources */,
 				5DECFD892F21F32100D69A9B /* MandalaGridView.swift in Sources */,

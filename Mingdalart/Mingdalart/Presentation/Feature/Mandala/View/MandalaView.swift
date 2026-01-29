@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MandalaView.swift
 //  Mingdalart
 //
 //  Created by YuSeongChoi on 1/7/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct MandalaView: View {
     @State private var viewModel: MandalaViewModel
     @State private var editingCell: MandalaCell?
     private let backgroundColor = MandalaPalette.backgroundCream
