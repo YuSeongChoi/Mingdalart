@@ -10,6 +10,8 @@ import SwiftUI
 struct CalendarView: View {
     @State private var viewModel: CalendarViewModel
     @State private var newTaskTitle: String = ""
+    @State private var dateAnchor: Date
+    @State private var isDatePickerPresented: Bool = false
 
     private let backgroundColor = MandalaPalette.backgroundCream
     private let accentColor = MandalaPalette.warmBeige
@@ -17,6 +19,7 @@ struct CalendarView: View {
 
     init(viewModel: CalendarViewModel) {
         _viewModel = .init(initialValue: viewModel)
+        _dateAnchor = .init(initialValue: Calendar.current.startOfDay(for: viewModel.selectedDate))
     }
 
     var body: some View {
@@ -25,6 +28,8 @@ struct CalendarView: View {
                 Text("오늘의 작은 실행 ✅")
                     .font(.subheadline)
                     .foregroundStyle(secondaryTextColor)
+
+                datePickerRow
 
                 dateScroller
             }
@@ -50,7 +55,7 @@ struct CalendarView: View {
                         viewModel.selectDate(date)
                     } label: {
                         VStack(spacing: 4) {
-                            Text(date, format: .dateTime.weekday(.short))
+                            Text(koreanWeekdayFormatter.string(from: date))
                                 .font(.caption2)
                                 .foregroundStyle(isSelected ? .white : secondaryTextColor)
                             Text(date, format: .dateTime.day())
@@ -67,6 +72,72 @@ struct CalendarView: View {
                 }
             }
             .padding(.vertical, 4)
+            .animation(.smooth(duration: 0.5), value: dateAnchor)
+        }
+    }
+
+    private var datePickerRow: some View {
+        HStack {
+            Button {
+                viewModel.selectDate(Date())
+                dateAnchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+            } label: {
+                Text("오늘")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(accentColor)
+                    .clipShape(Capsule())
+            }
+            .buttonStyle(.plain)
+
+            Spacer()
+
+            Button {
+                isDatePickerPresented = true
+            } label: {
+                Text(koreanMonthDateFormatter.string(from: viewModel.selectedDate))
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(secondaryTextColor)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(Color.white)
+                    .clipShape(Capsule())
+                    .shadow(color: MandalaPalette.cellShadow.opacity(0.14), radius: 3, x: 0, y: 1)
+            }
+            .buttonStyle(.plain)
+        }
+        .sheet(isPresented: $isDatePickerPresented) {
+            VStack(spacing: 16) {
+                DatePicker(
+                    "",
+                    selection: Binding(
+                        get: { viewModel.selectedDate },
+                        set: {
+                            viewModel.selectDate($0)
+                            dateAnchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+                        }
+                    ),
+                    displayedComponents: [.date]
+                )
+                .datePickerStyle(.graphical)
+                .environment(\.locale, Locale(identifier: "ko_KR"))
+                .tint(accentColor)
+                .labelsHidden()
+
+                Button("완료") {
+                    isDatePickerPresented = false
+                }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .background(accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .padding(16)
+            .presentationDetents([.medium])
         }
     }
 
@@ -96,7 +167,7 @@ struct CalendarView: View {
     private var taskList: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(viewModel.selectedDate, format: .dateTime.month().day())
+                Text(koreanMonthDayFormatter.string(from: viewModel.selectedDate))
                     .font(.caption)
                     .foregroundStyle(secondaryTextColor)
                 Spacer()
@@ -143,9 +214,30 @@ struct CalendarView: View {
 
     private var visibleDates: [Date] {
         let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
-        return (-7...7).compactMap { dayOffset in
-            calendar.date(byAdding: .day, value: dayOffset, to: today)
+        let anchor = calendar.startOfDay(for: dateAnchor)
+        return (0...14).compactMap { dayOffset in
+            calendar.date(byAdding: .day, value: dayOffset, to: anchor)
         }
+    }
+    
+    private var koreanMonthDateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy년 M월 d일"
+        return formatter
+    }
+    
+    private var koreanMonthDayFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "M월 d일"
+        return formatter
+    }
+    
+    private var koreanWeekdayFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "EEE" //
+        return formatter
     }
 }

@@ -24,7 +24,7 @@ struct MingdalartApp: App {
         
         // SwiftData 등록
         do {
-            let container = try ModelContainer(for: MandalaBoardEntity.self, MandalaCellEntity.self)
+            let container = try ModelContainer(for: MandalaBoardEntity.self, MandalaCellEntity.self, DailyTaskEntity.self)
             self.container = container
             let context = ModelContext(container)
             environment = AppEnvironment.live(modelContext: context)
@@ -42,9 +42,9 @@ struct MingdalartApp: App {
             if let container, let environment {
                 MainTabView(
                     mandalaViewModel: MandalaViewModel(useCase: environment.mandalUseCase),
-                    calendarViewModel: CalendarViewModel()
+                    calendarViewModel: CalendarViewModel(useCase: environment.dailyTaskUseCase)
                 )
-                    .modelContainer(container)
+                .modelContainer(container)
             } else {
                 ErrorView(message: initializationErrorMessage)
             }

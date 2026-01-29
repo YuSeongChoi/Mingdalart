@@ -12,13 +12,16 @@ import Foundation
 final class CalendarViewModel {
     var selectedDate: Date
     private(set) var tasks: [DailyTask]
+    
+    private let useCase: DailyTaskUseCase
 
     init(
-        selectedDate: Date = Date(),
-        tasks: [DailyTask] = []
+        useCase: DailyTaskUseCase,
+        selectedDate: Date = Date()
     ) {
+        self.useCase = useCase
         self.selectedDate = Calendar.current.startOfDay(for: selectedDate)
-        self.tasks = tasks
+        self.tasks = useCase.fetchDailyTask()
     }
 
     var tasksForSelectedDate: [DailyTask] {
@@ -30,17 +33,23 @@ final class CalendarViewModel {
     func selectDate(_ date: Date) {
         selectedDate = Calendar.current.startOfDay(for: date)
     }
+    
+    func reload() {
+        tasks = useCase.fetchDailyTask()
+    }
 
     func addTask(title: String) {
         let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
         let newTask = DailyTask(title: trimmed, date: selectedDate)
         tasks.append(newTask)
+        useCase.saveDailyTask(newTask)
     }
 
     func toggleTask(_ task: DailyTask) {
         guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
         tasks[index].isDone.toggle()
         tasks[index].doneAt = tasks[index].isDone ? Date() : nil
+        useCase.saveDailyTask(tasks[index])
     }
 }
