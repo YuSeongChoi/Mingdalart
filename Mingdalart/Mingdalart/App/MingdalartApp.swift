@@ -40,7 +40,10 @@ struct MingdalartApp: App {
     var body: some Scene {
         WindowGroup {
             if let container, let environment {
-                MainView(viewModel: MandalaViewModel(useCase: environment.mandalUseCase))
+                MainTabView(
+                    mandalaViewModel: MandalaViewModel(useCase: environment.mandalUseCase),
+                    calendarViewModel: CalendarViewModel()
+                )
                     .modelContainer(container)
             } else {
                 ErrorView(message: initializationErrorMessage)
