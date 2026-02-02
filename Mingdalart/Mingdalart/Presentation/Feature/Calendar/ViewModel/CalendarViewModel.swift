@@ -105,4 +105,9 @@ final class CalendarViewModel {
         tasks[index].linkedMandalaCellIndex = linkedIndex
         useCase.saveDailyTask(tasks[index])
     }
+
+    func deleteTask(_ task: DailyTask) {
+        tasks.removeAll { $0.id == task.id }
+        useCase.deleteDailyTask(task)
+    }
 }

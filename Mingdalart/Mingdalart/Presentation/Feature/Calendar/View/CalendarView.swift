@@ -198,19 +198,6 @@ struct CalendarView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             
             Button {
-                linkTargetTask = nil
-                isLinkSheetPresented = true
-            } label: {
-                Image(systemName: "link")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .frame(width: 40, height: 40)
-                    .background(accentColor)
-                    .clipShape(Circle())
-            }
-            .buttonStyle(.plain)
-
-            Button {
                 viewModel.addTask(title: newTaskTitle)
                 newTaskTitle = ""
             } label: {
@@ -245,7 +232,7 @@ struct CalendarView: View {
                     .padding(.horizontal, 16)
                     .padding(.top, 4)
             } else {
-                VStack(spacing: 10) {
+                List {
                     ForEach(viewModel.tasksForSelectedDate) { task in
                         HStack(spacing: 10) {
                             Button {
@@ -297,9 +284,30 @@ struct CalendarView: View {
                         .background(Color.white)
                         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                         .shadow(color: MandalaPalette.cellShadow.opacity(0.14), radius: 4, x: 0, y: 2)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
+                        .listRowBackground(Color.clear)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                viewModel.deleteTask(task)
+                            } label: {
+                                Label("삭제", systemImage: "trash")
+                            }
+                        }
+                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                            Button {
+                                viewModel.toggleTask(task)
+                            } label: {
+                                Label("완료", systemImage: task.isDone ? "arrow.uturn.left.circle" : "checkmark.circle")
+                            }
+                            .tint(task.isDone ? .gray : accentColor)
+                        }
                     }
                 }
-                .padding(.horizontal, 16)
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .background(backgroundColor)
+                .frame(minHeight: 0)
             }
         }
     }
