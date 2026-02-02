@@ -40,8 +40,8 @@ final class CalendarViewModel {
     
     var weeklyCompletionRate: Double {
         let calendar = Calendar.current
-        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date())) ?? Date()
-        
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: selectedDate)) ?? selectedDate
+
         var successDays = 0
         for offset in 0..<7 {
             guard let date = calendar.date(byAdding: .day, value: offset, to: startOfWeek) else { continue }
@@ -88,6 +88,21 @@ final class CalendarViewModel {
         guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
         tasks[index].isDone.toggle()
         tasks[index].doneAt = tasks[index].isDone ? Date() : nil
+        useCase.saveDailyTask(tasks[index])
+    }
+
+    func updateTaskTitle(_ task: DailyTask, title: String) {
+        let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty,
+              let index = tasks.firstIndex(where: { $0.id == task.id })
+        else { return }
+        tasks[index].title = trimmed
+        useCase.saveDailyTask(tasks[index])
+    }
+
+    func updateTaskLink(_ task: DailyTask, linkedIndex: Int?) {
+        guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
+        tasks[index].linkedMandalaCellIndex = linkedIndex
         useCase.saveDailyTask(tasks[index])
     }
 }

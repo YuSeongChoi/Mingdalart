@@ -12,14 +12,21 @@ struct CalendarView: View {
     @State private var newTaskTitle: String = ""
     @State private var dateAnchor: Date
     @State private var isDatePickerPresented: Bool = false
+    @State private var isLinkSheetPresented: Bool = false
+    @State private var editingTask: DailyTask?
+    @State private var editingText: String = ""
+    @State private var linkTargetTask: DailyTask?
 
+    let mandalaCells: [MandalaCell]
+    
     private let backgroundColor = MandalaPalette.backgroundCream
     private let accentColor = MandalaPalette.warmBeige
     private let secondaryTextColor = MandalaPalette.cocoaText
 
-    init(viewModel: CalendarViewModel) {
+    init(viewModel: CalendarViewModel, mandalaCells: [MandalaCell]) {
         _viewModel = .init(initialValue: viewModel)
         _dateAnchor = .init(initialValue: Calendar.current.startOfDay(for: viewModel.selectedDate))
+        self.mandalaCells = mandalaCells
     }
 
     var body: some View {
@@ -36,6 +43,8 @@ struct CalendarView: View {
             .padding(.horizontal, 16)
             .padding(.top, 12)
 
+            summaryRow
+            
             taskInput
                 .padding(.horizontal, 16)
 
@@ -44,6 +53,45 @@ struct CalendarView: View {
             Spacer()
         }
         .background(backgroundColor)
+        .sheet(isPresented: $isLinkSheetPresented) {
+            LinkMandalaCellSheet(
+                cells: mandalaCells,
+                selectedTaskIndex: linkTargetTask?.linkedMandalaCellIndex ?? viewModel.selectedLinkedMandalaIndex
+            ) { selected in
+                if let linkTargetTask {
+                    viewModel.updateTaskLink(linkTargetTask, linkedIndex: selected?.index)
+                } else {
+                    viewModel.selectedLinkedMandalaIndex = selected?.index
+                }
+                self.linkTargetTask = nil
+                isLinkSheetPresented = false
+            }
+        }
+        .sheet(item: $editingTask) { task in
+            VStack(spacing: 16) {
+                Text("할 일 수정")
+                    .font(.headline)
+
+                TextField("할 일을 입력하세요", text: $editingText)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 12)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+
+                Button("저장") {
+                    viewModel.updateTaskTitle(task, title: editingText)
+                    editingTask = nil
+                }
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .background(accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            }
+            .padding(16)
+            .presentationDetents([.fraction(0.25)])
+        }
     }
 
     private var dateScroller: some View {
@@ -148,6 +196,19 @@ struct CalendarView: View {
                 .padding(.horizontal, 12)
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+            
+            Button {
+                linkTargetTask = nil
+                isLinkSheetPresented = true
+            } label: {
+                Image(systemName: "link")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.white)
+                    .frame(width: 40, height: 40)
+                    .background(accentColor)
+                    .clipShape(Circle())
+            }
+            .buttonStyle(.plain)
 
             Button {
                 viewModel.addTask(title: newTaskTitle)
@@ -186,32 +247,76 @@ struct CalendarView: View {
             } else {
                 VStack(spacing: 10) {
                     ForEach(viewModel.tasksForSelectedDate) { task in
-                        Button {
-                            viewModel.toggleTask(task)
-                        } label: {
-                            HStack(spacing: 10) {
+                        HStack(spacing: 10) {
+                            Button {
+                                viewModel.toggleTask(task)
+                            } label: {
                                 Image(systemName: task.isDone ? "checkmark.circle.fill" : "circle")
                                     .foregroundStyle(task.isDone ? accentColor : secondaryTextColor.opacity(0.6))
+                            }
+                            .buttonStyle(.plain)
+
+                            Button {
+                                editingText = task.title
+                                editingTask = task
+                            } label: {
                                 Text(task.title)
                                     .font(.subheadline)
                                     .foregroundStyle(secondaryTextColor)
                                     .strikethrough(task.isDone, color: secondaryTextColor.opacity(0.5))
-                                Spacer()
                             }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 12)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                            .shadow(color: MandalaPalette.cellShadow.opacity(0.14), radius: 4, x: 0, y: 2)
+                            .buttonStyle(.plain)
+
+                            Spacer()
+
+                            if let subGoalTitle = linkedSubGoalTitle(for: task) {
+                                Text(subGoalTitle)
+                                    .font(.caption2)
+                                    .foregroundStyle(accentColor)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 8)
+                                    .background(accentColor.opacity(0.12))
+                                    .clipShape(Capsule())
+                            }
+
+                            Button {
+                                linkTargetTask = task
+                                isLinkSheetPresented = true
+                            } label: {
+                                Image(systemName: "link")
+                                    .font(.caption)
+                                    .foregroundStyle(secondaryTextColor.opacity(0.8))
+                                    .padding(6)
+                                    .background(Color.white)
+                                    .clipShape(Circle())
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 12)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .shadow(color: MandalaPalette.cellShadow.opacity(0.14), radius: 4, x: 0, y: 2)
                     }
                 }
                 .padding(.horizontal, 16)
             }
         }
     }
+    
+    private var summaryRow: some View {
+        HStack(spacing: 8) {
+            SummaryChip(title: "오늘 완료", value: "\(viewModel.todayDoneCount)개")
+            SummaryChip(title: "연속", value: "\(viewModel.currentStreak)일")
+            SummaryChip(title: "이번 주", value: "\(Int(viewModel.weeklyCompletionRate * 100))%")
+        }
+        .animation(.easeInOut(duration: 0.25), value: viewModel.todayDoneCount)
+        .animation(.easeInOut(duration: 0.25), value: viewModel.currentStreak)
+        .animation(.easeInOut(duration: 0.25), value: viewModel.weeklyCompletionRate)
+    }
+}
 
+extension CalendarView {
     private var visibleDates: [Date] {
         let calendar = Calendar.current
         let anchor = calendar.startOfDay(for: dateAnchor)
@@ -239,5 +344,21 @@ struct CalendarView: View {
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "EEE" //
         return formatter
+    }
+
+    private func linkedSubGoalTitle(for task: DailyTask) -> String? {
+        guard let linkedIndex = task.linkedMandalaCellIndex else { return nil }
+        let centerIndex = blockCenterIndex(for: linkedIndex)
+        guard let cell = mandalaCells.first(where: { $0.index == centerIndex }) else { return nil }
+        let trimmed = cell.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? "서브 목표" : trimmed
+    }
+
+    private func blockCenterIndex(for index: Int) -> Int {
+        let row = index / 9
+        let col = index % 9
+        let centerRow = (row / 3) * 3 + 1
+        let centerCol = (col / 3) * 3 + 1
+        return centerRow * 9 + centerCol
     }
 }
