@@ -21,9 +21,13 @@ final class SwiftDataDailyTaskRepository: DailyTaskRepository {
         let entities = (try? context.fetch(descriptor)) ?? []
         return entities.map {
             DailyTask(
-                id: $0.id, title: $0.title,
-                date: $0.date, isDone: $0.isDone,
-                doneAt: $0.doneAt, createdAt: $0.createdAt
+                id: $0.id,
+                title: $0.title,
+                date: $0.date,
+                isDone: $0.isDone,
+                doneAt: $0.doneAt,
+                createdAt: $0.createdAt,
+                linkedMandalaCellIndex: $0.linkedMandalaCellIndex
             )
         }
     }
@@ -37,6 +41,7 @@ final class SwiftDataDailyTaskRepository: DailyTaskRepository {
             existing.isDone = task.isDone
             existing.doneAt = task.doneAt
             existing.createdAt = task.createdAt
+            existing.linkedMandalaCellIndex = task.linkedMandalaCellIndex
         } else {
             let entity = DailyTaskEntity(
                 id: task.id,
@@ -44,7 +49,8 @@ final class SwiftDataDailyTaskRepository: DailyTaskRepository {
                 date: task.date,
                 isDone: task.isDone,
                 doneAt: task.doneAt,
-                createdAt: task.createdAt
+                createdAt: task.createdAt,
+                linkedMandalaCellIndex: task.linkedMandalaCellIndex
             )
             context.insert(entity)
         }

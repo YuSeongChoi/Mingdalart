@@ -14,6 +14,7 @@ struct DailyTask: Identifiable, Hashable {
     var isDone: Bool
     var doneAt: Date?
     let createdAt: Date
+    var linkedMandalaCellIndex: Int?
 
     init(
         id: UUID = UUID(),
@@ -21,7 +22,8 @@ struct DailyTask: Identifiable, Hashable {
         date: Date,
         isDone: Bool = false,
         doneAt: Date? = nil,
-        createdAt: Date = Date()
+        createdAt: Date = Date(),
+        linkedMandalaCellIndex: Int? = nil
     ) {
         self.id = id
         self.title = title
@@ -29,5 +31,6 @@ struct DailyTask: Identifiable, Hashable {
         self.isDone = isDone
         self.doneAt = doneAt
         self.createdAt = createdAt
+        self.linkedMandalaCellIndex = linkedMandalaCellIndex
     }
 }

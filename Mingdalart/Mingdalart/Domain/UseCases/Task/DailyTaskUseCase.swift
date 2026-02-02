@@ -27,6 +27,10 @@ struct DailyTaskUseCase {
         saveDailyTask.execute(task)
     }
     
+    func updateTaskLink(taskId: UUID, linkedIndex: Int?) {
+        // TODO: 현재는 saveDailyTask를 통해 갱신해도 되지만, 추후 따로 업데이트할때를 대비해 둔다.
+    }
+    
     func deleteDailyTask(_ task: DailyTask) {
         deleteDailyTask.execute(task)
     }
