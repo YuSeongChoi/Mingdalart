@@ -59,9 +59,13 @@ struct LinkMandalaCellSheet: View {
         .padding(16)
         .onAppear {
             selectedIndex = selectedTaskIndex
+            if let selectedIndex,
+               let subGoal = parentSubGoal(for: selectedIndex) {
+                expandedSubGoalIndex = subGoal.index
+            }
         }
     }
-}
+} 
 
 private extension LinkMandalaCellSheet {
     var contentList: some View {
@@ -168,5 +172,15 @@ private extension LinkMandalaCellSheet {
             .compactMap { idx in cells.first(where: { $0.index == idx }) }
             .filter { $0.role == .task }
             .filter { !$0.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+    }
+
+    func parentSubGoal(for taskIndex: Int) -> MandalaCell? {
+        let row = taskIndex / 9
+        let col = taskIndex % 9
+        let centerRow = (row / 3) * 3 + 1
+        let centerCol = (col / 3) * 3 + 1
+        let centerIndex = centerRow * 9 + centerCol
+        let coreIndex = MandalaRule.subGoalReverseMap[centerIndex] ?? centerIndex
+        return cells.first { $0.index == coreIndex && $0.role == .subGoal }
     }
 }
