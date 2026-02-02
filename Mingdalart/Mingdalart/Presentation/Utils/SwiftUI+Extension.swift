@@ -8,6 +8,19 @@
 import SwiftUI
 import RswiftResources
 
+extension View {
+    func dismissKeyboardOnTap() -> some View {
+        self
+            .contentShape(Rectangle())
+            .onTapGesture {
+                UIApplication.shared.sendAction(
+                    #selector(UIResponder.resignFirstResponder),
+                    to: nil, from: nil, for: nil
+                )
+            }
+    }
+}
+
 extension Text {
     func NotoSansReg(size: CGFloat) -> Text {
         self.font(R.font.notoSansCJKkrRegular.swiftFontOfSize(size))

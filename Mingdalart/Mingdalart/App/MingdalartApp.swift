@@ -45,6 +45,7 @@ struct MingdalartApp: App {
                     calendarViewModel: CalendarViewModel(useCase: environment.dailyTaskUseCase)
                 )
                 .modelContainer(container)
+                .dismissKeyboardOnTap()
             } else {
                 ErrorView(message: initializationErrorMessage)
             }
