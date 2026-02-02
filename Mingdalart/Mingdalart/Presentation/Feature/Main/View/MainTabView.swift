@@ -23,7 +23,7 @@ struct MainTabView: View {
                     Label("만다라트", systemImage: "square.grid.3x3.fill")
                 }
 
-            CalendarView(viewModel: calendarViewModel)
+            CalendarView(viewModel: calendarViewModel, mandalaCells: mandalaViewModel.orderedCells)
                 .tabItem {
                     Label("캘린더", systemImage: "calendar")
                 }

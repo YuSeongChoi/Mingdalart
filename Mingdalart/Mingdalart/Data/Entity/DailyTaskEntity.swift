@@ -16,6 +16,7 @@ final class DailyTaskEntity {
     var isDone: Bool
     var doneAt: Date?
     var createdAt: Date
+    var linkedMandalaCellIndex: Int?
     
     init(
         id: UUID,
@@ -23,7 +24,8 @@ final class DailyTaskEntity {
         date: Date,
         isDone: Bool,
         doneAt: Date? = nil,
-        createdAt: Date
+        createdAt: Date,
+        linkedMandalaCellIndex: Int? = nil
     ) {
         self.id = id
         self.title = title
@@ -31,5 +33,6 @@ final class DailyTaskEntity {
         self.isDone = isDone
         self.doneAt = doneAt
         self.createdAt = createdAt
+        self.linkedMandalaCellIndex = linkedMandalaCellIndex
     }
 }
