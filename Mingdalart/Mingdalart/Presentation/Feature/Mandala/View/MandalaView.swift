@@ -13,6 +13,7 @@ struct MandalaView: View {
     private let backgroundColor = MandalaPalette.backgroundCream
     private let accentColor = MandalaPalette.warmBeige
     private let secondaryTextColor = MandalaPalette.cocoaText
+    private let mascotImageSizeRatio: CGFloat = 0.3
     
     init(viewModel: MandalaViewModel) {
         _viewModel = .init(initialValue: viewModel)
@@ -45,12 +46,7 @@ struct MandalaView: View {
             .padding(.horizontal, 16)
             .padding(.top, 12)
             
-            
-            MandalaGridView(cells: viewModel.orderedCells) { cell in
-                editingCell = cell
-            }
-            .padding(.top, 20)
-            .padding(.horizontal, 4)
+            gridWithMascot
             
             Spacer()
         }
@@ -83,5 +79,55 @@ struct MandalaView: View {
         default:
             return "완성! 오늘도 정말 멋져요"
         }
+    }
+
+    private var gridWithMascot: some View {
+        GeometryReader { proxy in
+            let side = max(proxy.size.width - 8, 0)
+            VStack(spacing: 8) {
+                MandalaGridView(cells: viewModel.orderedCells) { cell in
+                    editingCell = cell
+                }
+                .frame(width: side, height: side)
+                
+                HStack {
+                    Spacer()
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("밍🐹")
+                            .pretendSemiBold(size: 13)
+                            .foregroundStyle(secondaryTextColor)
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 6)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .fill(MandalaPalette.taskCream)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                            .stroke(MandalaPalette.warmBeige.opacity(0.4), lineWidth: 1)
+                                    )
+                            )
+                            .overlay(alignment: .bottomTrailing) {
+                                Circle()
+                                    .fill(MandalaPalette.taskCream)
+                                    .frame(width: 6, height: 6)
+                                    .offset(x: 2, y: 6)
+                            }
+                            .shadow(color: MandalaPalette.cellShadow.opacity(0.12), radius: 2, x: 0, y: 1)
+                        
+                        R.image.hamster.swiftImage
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: side * mascotImageSizeRatio, height: side * mascotImageSizeRatio)
+                            .clipped()
+                            .offset(y: -20)
+                            .zIndex(-1)
+                    }
+                }
+            }
+            .frame(width: proxy.size.width, alignment: .top)
+        }
+        .frame(minHeight: 0)
+        .padding(.top, 20)
+        .padding(.horizontal, 4)
     }
 }
