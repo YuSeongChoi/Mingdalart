@@ -40,6 +40,7 @@
 		5D920E822F2B3A5900874F96 /* DailyTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920E812F2B3A5900874F96 /* DailyTaskUseCase.swift */; };
 		5D920EB82F30877400874F96 /* SummaryChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920EB72F30877400874F96 /* SummaryChip.swift */; };
 		5D920EBE2F3089E600874F96 /* LinkMandalaCellSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D920EBD2F3089E600874F96 /* LinkMandalaCellSheet.swift */; };
+		5D93A0A12F3C8F0100874F96 /* MingMingQuotes.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D93A0A02F3C8F0100874F96 /* MingMingQuotes.json */; };
 		5DCCAA102F2B100100874F96 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA0F2F2B100100874F96 /* MainTabView.swift */; };
 		5DCCAA122F2B100100874F96 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA112F2B100100874F96 /* CalendarView.swift */; };
 		5DCCAA142F2B100100874F96 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */; };
@@ -111,6 +112,7 @@
 		5D920E812F2B3A5900874F96 /* DailyTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskUseCase.swift; sourceTree = "<group>"; };
 		5D920EB72F30877400874F96 /* SummaryChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryChip.swift; sourceTree = "<group>"; };
 		5D920EBD2F3089E600874F96 /* LinkMandalaCellSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkMandalaCellSheet.swift; sourceTree = "<group>"; };
+		5D93A0A02F3C8F0100874F96 /* MingMingQuotes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MingMingQuotes.json; sourceTree = "<group>"; };
 		5DCCAA0F2F2B100100874F96 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5DCCAA112F2B100100874F96 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		5DCCAA132F2B100100874F96 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				5DECFD562F21F32100D69A9B /* Assets.xcassets */,
 				5D920DD22F29D75E00874F96 /* Rswift+Extension.swift */,
 				5D920DB02F29CDC600874F96 /* MingdalartResources.swift */,
+				5D93A0A02F3C8F0100874F96 /* MingMingQuotes.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				5D920D9F2F29CB6A00874F96 /* Lato-Black.ttf in Resources */,
 				5D920DA02F29CB6A00874F96 /* Pretendard-Medium.otf in Resources */,
 				5D920DA12F29CB6A00874F96 /* NotoSansCJKkr-Bold.otf in Resources */,
+				5D93A0A12F3C8F0100874F96 /* MingMingQuotes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,8 +838,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
@@ -881,8 +885,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
