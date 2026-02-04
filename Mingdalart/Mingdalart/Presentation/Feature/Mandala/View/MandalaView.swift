@@ -20,15 +20,23 @@ struct MandalaView: View {
     }
 
     var body: some View {
-        VStack(spacing: 12) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text("오늘도 한 칸씩, 천천히 🐹")
-                    .font(.subheadline)
-                    .foregroundStyle(secondaryTextColor)
+        VStack(spacing: 8) {
+            VStack(spacing: 20) {
+                VStack {
+                    Text(viewModel.mingMingQuote)
+                        .pretendSemiBold(size: 12)
+                        .foregroundStyle(MandalaPalette.cocoaText)
+                        .multilineTextAlignment(.center)
+                }
+                .frame(alignment: .center)
+                .padding(.vertical, 10)
+                .background(MandalaPalette.warmBeige.opacity(0.5))
+                .cornerRadius(15)
+                .padding(.top, 10)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(progressHeadline)
-                        .font(.caption)
+                        .pretendReg(size: 12)
                         .foregroundStyle(secondaryTextColor)
                         .contentTransition(.opacity)
                     
@@ -43,8 +51,7 @@ struct MandalaView: View {
                 }
                 .animation(.easeInOut(duration: 0.2), value: viewModel.completionRate)
             }
-            .padding(.horizontal, 16)
-            .padding(.top, 12)
+            .padding(.horizontal, 8)
             
             gridWithMascot
             
@@ -90,7 +97,7 @@ struct MandalaView: View {
                 }
                 .frame(width: side, height: side)
                 
-                HStack {
+                HStack(alignment: .top, spacing: 8) {
                     Spacer()
                     VStack(alignment: .leading, spacing: 0) {
                         Text("밍🐹")
@@ -127,7 +134,6 @@ struct MandalaView: View {
             .frame(width: proxy.size.width, alignment: .top)
         }
         .frame(minHeight: 0)
-        .padding(.top, 20)
         .padding(.horizontal, 4)
     }
 }

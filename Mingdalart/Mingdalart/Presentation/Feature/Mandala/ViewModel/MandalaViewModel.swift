@@ -12,6 +12,7 @@ import SwiftUI
 final class MandalaViewModel {
     private let useCase: MandalaUseCase
     var board: MandalaBoard?
+    var mingMingQuote: String = ""
     
     var completionRate: Double {
         guard let board else { return 0 }
@@ -24,6 +25,7 @@ final class MandalaViewModel {
 
     func load() {
         board = useCase.loadBoard()
+        mingMingQuote = MingMingQuoteLoader.loadRandomQuote() ?? ""
     }
 
     func updateCellText(index: Int, text: String, isDone: Bool? = nil) {
@@ -34,5 +36,20 @@ final class MandalaViewModel {
     // 9x9 셀을 인덱스 순서대로 정렬해 그리드와 매칭한다.
     var orderedCells: [MandalaCell] {
         board?.cells.sorted { $0.index < $1.index } ?? []
+    }
+}
+
+private enum MingMingQuoteLoader {
+    static func loadRandomQuote() -> String? {
+        guard let url = Bundle.main.url(forResource: "MingMingQuotes", withExtension: "json") else {
+            return nil
+        }
+        do {
+            let data = try Data(contentsOf: url)
+            let quotes = try JSONDecoder().decode([String].self, from: data)
+            return quotes.randomElement()
+        } catch {
+            return nil
+        }
     }
 }
