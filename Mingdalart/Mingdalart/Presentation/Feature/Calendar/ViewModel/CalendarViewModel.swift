@@ -13,16 +13,16 @@ final class CalendarViewModel {
     var selectedDate: Date
     private(set) var tasks: [DailyTask]
     private let useCase: DailyTaskUseCase
-    var selectedLinkedMandalaIndex: Int? = nil
-    
+    var selectedLinkedMandalaIndex: Int?
+
     var todayDoneCount: Int {
         tasksForSelectedDate.filter { $0.isDone }.count
     }
-    
+
     var currentStreak: Int {
         let calendar = Calendar.current
         let grouped = Dictionary(grouping: tasks) { calendar.startOfDay(for: $0.date) }
-        
+
         var streak = 0
         var cursor = calendar.startOfDay(for: Date())
         while true {
@@ -37,10 +37,12 @@ final class CalendarViewModel {
         }
         return streak
     }
-    
+
     var weeklyCompletionRate: Double {
         let calendar = Calendar.current
-        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: selectedDate)) ?? selectedDate
+        let startOfWeek = calendar.date(
+            from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: selectedDate)
+        ) ?? selectedDate
 
         var successDays = 0
         for offset in 0..<7 {
@@ -71,7 +73,7 @@ final class CalendarViewModel {
     func selectDate(_ date: Date) {
         selectedDate = Calendar.current.startOfDay(for: date)
     }
-    
+
     func reload() {
         tasks = useCase.fetchDailyTask()
     }

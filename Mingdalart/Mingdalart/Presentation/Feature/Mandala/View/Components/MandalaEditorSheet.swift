@@ -13,7 +13,7 @@ struct MandalaEditorSheet: View {
     let onSave: (String, Bool) -> Void
     @State private var text: String
     @State private var isDone: Bool
-    
+
     private let maxTextLength = 20
     private let backgroundCream = MandalaPalette.backgroundCream
     private let cardShadow = MandalaPalette.cellShadow.opacity(0.18)
@@ -44,9 +44,9 @@ struct MandalaEditorSheet: View {
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        
+
                         Spacer()
-                        
+
                         if cell.role == .task {
                             Button {
                                 isDone.toggle()

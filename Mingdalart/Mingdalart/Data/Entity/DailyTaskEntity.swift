@@ -17,7 +17,7 @@ final class DailyTaskEntity {
     var doneAt: Date?
     var createdAt: Date
     var linkedMandalaCellIndex: Int?
-    
+
     init(
         id: UUID,
         title: String,

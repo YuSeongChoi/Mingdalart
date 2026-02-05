@@ -18,7 +18,7 @@ struct CalendarView: View {
     @State private var linkTargetTask: DailyTask?
 
     let mandalaCells: [MandalaCell]
-    
+
     private let backgroundColor = MandalaPalette.backgroundCream
     private let accentColor = MandalaPalette.warmBeige
     private let secondaryTextColor = MandalaPalette.cocoaText
@@ -44,7 +44,7 @@ struct CalendarView: View {
             .padding(.top, 12)
 
             summaryRow
-            
+
             taskInput
                 .padding(.horizontal, 16)
 
@@ -93,8 +93,10 @@ struct CalendarView: View {
             .presentationDetents([.fraction(0.25)])
         }
     }
+}
 
-    private var dateScroller: some View {
+private extension CalendarView {
+    var dateScroller: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 ForEach(visibleDates, id: \.self) { date in
@@ -124,7 +126,7 @@ struct CalendarView: View {
         }
     }
 
-    private var datePickerRow: some View {
+    var datePickerRow: some View {
         HStack {
             Button {
                 viewModel.selectDate(Date())
@@ -189,14 +191,14 @@ struct CalendarView: View {
         }
     }
 
-    private var taskInput: some View {
+    var taskInput: some View {
         HStack(spacing: 8) {
             TextField("오늘의 태스크를 적어주세요", text: $newTaskTitle)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 12)
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-            
+
             Button {
                 viewModel.addTask(title: newTaskTitle)
                 newTaskTitle = ""
@@ -212,7 +214,7 @@ struct CalendarView: View {
         }
     }
 
-    private var taskList: some View {
+    var taskList: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(koreanMonthDayFormatter.string(from: viewModel.selectedDate))
@@ -311,8 +313,8 @@ struct CalendarView: View {
             }
         }
     }
-    
-    private var summaryRow: some View {
+
+    var summaryRow: some View {
         HStack(spacing: 8) {
             SummaryChip(title: "오늘 완료", value: "\(viewModel.todayDoneCount)개")
             SummaryChip(title: "연속", value: "\(viewModel.currentStreak)일")
@@ -332,21 +334,21 @@ extension CalendarView {
             calendar.date(byAdding: .day, value: dayOffset, to: anchor)
         }
     }
-    
+
     private var koreanMonthDateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy년 M월 d일"
         return formatter
     }
-    
+
     private var koreanMonthDayFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "M월 d일"
         return formatter
     }
-    
+
     private var koreanWeekdayFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")

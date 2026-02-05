@@ -13,7 +13,7 @@ final class MandalaViewModel {
     private let useCase: MandalaUseCase
     var board: MandalaBoard?
     var mingMingQuote: String = ""
-    
+
     var completionRate: Double {
         guard let board else { return 0 }
         return useCase.completionRate(board: board)

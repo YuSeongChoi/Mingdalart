@@ -23,10 +23,10 @@ struct MandalaRule {
         37: 39, 43: 41,
         64: 48, 67: 49, 70: 50
     ]
-    
+
     static let coreSubGoalIndices = Set(subGoalMirrorMap.keys)
     static let mirroredSubGoalIndices = Set(subGoalMirrorMap.values)
-    
+
     static func roleForIndex(_ index: Int) -> MandalaRole {
         guard index >= 0 && index < cellCount else { return .task }
         // 중앙 한 칸은 Main Goal.

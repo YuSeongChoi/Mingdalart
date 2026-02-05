@@ -16,7 +16,7 @@ struct LinkMandalaCellSheet: View {
     @State private var selectedIndex: Int?
     private let accentColor = MandalaPalette.warmBeige
     private let secondaryTextColor = MandalaPalette.cocoaText
-    
+
     var body: some View {
         VStack(spacing: 12) {
             Text("연결할 목표 선택")
@@ -65,7 +65,7 @@ struct LinkMandalaCellSheet: View {
             }
         }
     }
-} 
+}
 
 private extension LinkMandalaCellSheet {
     var contentList: some View {
@@ -164,8 +164,8 @@ private extension LinkMandalaCellSheet {
         let centerCol = mirroredIndex % 9
         let startRow = (centerRow / 3) * 3
         let startCol = (centerCol / 3) * 3
-        let indices = (startRow..<(startRow + 3)).flatMap { r in
-            (startCol..<(startCol + 3)).map { c in r * 9 + c }
+        let indices = (startRow..<(startRow + 3)).flatMap { rowIndex in
+            (startCol..<(startCol + 3)).map { columnIndex in rowIndex * 9 + columnIndex }
         }
         return indices
             .filter { $0 != mirroredIndex }

@@ -10,11 +10,11 @@ import Foundation
 @MainActor
 struct UpdateCellTextUseCase {
     private let repository: MandalaRepository
-    
+
     init(repository: MandalaRepository) {
         self.repository = repository
     }
-    
+
     func execute(board: MandalaBoard, index: Int, text: String, isDone: Bool? = nil) -> MandalaBoard {
         var updatedBoard = board
         guard let cellIndex = updatedBoard.cells.firstIndex(where: { $0.index == index }) else {
@@ -35,7 +35,7 @@ struct UpdateCellTextUseCase {
         repository.saveBoard(updatedBoard)
         return updatedBoard
     }
-    
+
     private func syncSubGoalText(in board: inout MandalaBoard, sourceIndex: Int) {
         let targetIndex = MandalaRule.subGoalMirrorMap[sourceIndex]
             ?? MandalaRule.subGoalReverseMap[sourceIndex]
