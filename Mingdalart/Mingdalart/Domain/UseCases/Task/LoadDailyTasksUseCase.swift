@@ -10,11 +10,11 @@ import Foundation
 @MainActor
 struct LoadDailyTasksUseCase {
     private let repository: DailyTaskRepository
-    
+
     init(repository: DailyTaskRepository) {
         self.repository = repository
     }
-    
+
     func execute() -> [DailyTask] {
         repository.fetchTasks()
     }

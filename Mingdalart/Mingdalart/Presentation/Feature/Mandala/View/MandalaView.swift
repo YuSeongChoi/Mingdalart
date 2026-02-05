@@ -52,7 +52,7 @@ struct MandalaView: View {
             .presentationDragIndicator(.visible)
         }
     }
-    
+
     // MARK: - Computed
 
     private var progressHeadline: String {

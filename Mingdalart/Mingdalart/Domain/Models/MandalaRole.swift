@@ -11,7 +11,7 @@ enum MandalaRole: Int, Codable, Hashable, Sendable {
     case main
     case subGoal
     case task
-    
+
     // 그리드에서 기본 표시 텍스트로 사용한다.
     var description: String {
         switch self {

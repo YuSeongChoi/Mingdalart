@@ -16,7 +16,7 @@ struct LinkMandalaCellSheet: View {
     @State private var selectedIndex: Int?
     private let accentColor = MandalaPalette.warmBeige
     private let secondaryTextColor = MandalaPalette.cocoaText
-    
+
     var body: some View {
         VStack(spacing: 12) {
             Text("연결할 목표 선택")
@@ -65,7 +65,7 @@ struct LinkMandalaCellSheet: View {
             }
         }
     }
-} 
+}
 
 private extension LinkMandalaCellSheet {
     var contentList: some View {

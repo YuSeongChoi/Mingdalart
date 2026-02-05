@@ -10,7 +10,7 @@ import SwiftUI
 struct MandalaCellView: View {
     let cell: MandalaCell
     let size: CGFloat
-    
+
     private let baseShadow = MandalaPalette.cellShadow.opacity(0.18)
     private let doneHighlight = MandalaPalette.doneHighlight
     private let doneAccent = MandalaPalette.doneAccent
@@ -33,7 +33,7 @@ struct MandalaCellView: View {
                     .position(x: size - 12, y: 12)
                     .transition(.scale.combined(with: .opacity))
             }
-            
+
             Text(displayText)
                 .font(cell.role.font)
                 .foregroundStyle(cell.role.textColor)

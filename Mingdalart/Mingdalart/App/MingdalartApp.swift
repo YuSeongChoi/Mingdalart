@@ -5,15 +5,15 @@
 //  Created by YuSeongChoi on 1/7/26.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 @main
 struct MingdalartApp: App {
     private let container: ModelContainer?
     private let environment: AppEnvironment?
     private let initializationErrorMessage: String?
-    
+
     init() {
         // 폰트 등록
         do {
@@ -23,7 +23,11 @@ struct MingdalartApp: App {
         }
         // SwiftData 등록
         do {
-            let container = try ModelContainer(for: MandalaBoardEntity.self, MandalaCellEntity.self, DailyTaskEntity.self)
+            let container = try ModelContainer(
+                for: MandalaBoardEntity.self,
+                MandalaCellEntity.self,
+                DailyTaskEntity.self
+            )
             self.container = container
             let context = ModelContext(container)
             environment = AppEnvironment.live(modelContext: context)
@@ -35,7 +39,7 @@ struct MingdalartApp: App {
             initializationErrorMessage = "데이터를 불러오는 데 실패했어요.\n앱을 다시 실행해 주세요."
         }
     }
-    
+
     var body: some Scene {
         WindowGroup {
             if let container, let environment {

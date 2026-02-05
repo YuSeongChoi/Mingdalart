@@ -10,11 +10,11 @@ import Foundation
 @MainActor
 struct SaveCellUseCase {
     private let repository: MandalaRepository
-    
+
     init(repository: MandalaRepository) {
         self.repository = repository
     }
-    
+
     func execute(_ cell: MandalaCell) {
         repository.saveCell(cell)
     }

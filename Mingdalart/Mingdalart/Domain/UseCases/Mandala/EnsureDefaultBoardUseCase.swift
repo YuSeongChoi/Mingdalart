@@ -10,11 +10,11 @@ import Foundation
 @MainActor
 struct EnsureDefaultBoardUseCase {
     private let repository: MandalaRepository
-    
+
     init(repository: MandalaRepository) {
         self.repository = repository
     }
-    
+
     func execute() -> MandalaBoard {
         if let board = repository.fetchBoard() {
             let normalized = normalizeRoles(in: board)
@@ -26,7 +26,7 @@ struct EnsureDefaultBoardUseCase {
         repository.saveBoard(board)
         return board
     }
-    
+
     private func makeDefaultBoard(title: String) -> MandalaBoard {
         let cells = (0..<MandalaRule.cellCount).map { index in
             MandalaCell(index: index, text: "", role: MandalaRule.roleForIndex(index))

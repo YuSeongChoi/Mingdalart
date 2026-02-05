@@ -6,6 +6,7 @@
 //
 
 import Testing
+
 @testable import Mingdalart
 
 struct MandalaRuleTests {

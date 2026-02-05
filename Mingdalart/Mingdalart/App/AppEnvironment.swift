@@ -13,7 +13,7 @@ final class AppEnvironment {
     let mandalUseCase: MandalaUseCase
     let dailyTaskRepository: DailyTaskRepository
     let dailyTaskUseCase: DailyTaskUseCase
-    
+
     init(
         mandalRepository: MandalaRepository,
         mandalUseCase: MandalaUseCase,
@@ -25,16 +25,16 @@ final class AppEnvironment {
         self.dailyTaskRepository = dailyTaskRepository
         self.dailyTaskUseCase = dailyTaskUseCase
     }
-    
+
     static func live(modelContext: ModelContext) -> AppEnvironment {
         // Repository
         let mandalRepository = SwiftDataMandalaRepository(context: modelContext)
         let dailyTaskRepository = SwiftDataDailyTaskRepository(context: modelContext)
-        
+
         // UseCase
         let mandalUseCase = MandalaUseCase(repository: mandalRepository)
         let dailyTaskUseCase = DailyTaskUseCase(repository: dailyTaskRepository)
-        
+
         return AppEnvironment(
             mandalRepository: mandalRepository,
             mandalUseCase: mandalUseCase,

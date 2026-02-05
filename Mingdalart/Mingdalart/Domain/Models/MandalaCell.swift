@@ -16,8 +16,15 @@ struct MandalaCell: Identifiable {
     var board: MandalaBoard?
 
     var id: Int { index }
-    
-    init(index: Int, text: String, role: MandalaRole, isDone: Bool = false, doneAt: Date? = nil, board: MandalaBoard? = nil) {
+
+    init(
+        index: Int,
+        text: String,
+        role: MandalaRole,
+        isDone: Bool = false,
+        doneAt: Date? = nil,
+        board: MandalaBoard? = nil
+    ) {
         self.index = index
         self.text = text
         self.role = role

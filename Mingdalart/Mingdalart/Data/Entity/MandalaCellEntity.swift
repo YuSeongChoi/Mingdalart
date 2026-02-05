@@ -5,8 +5,8 @@
 //  Created by YuSeongChoi on 1/12/26.
 //
 
-import SwiftData
 import Foundation
+import SwiftData
 
 @Model
 class MandalaCellEntity {

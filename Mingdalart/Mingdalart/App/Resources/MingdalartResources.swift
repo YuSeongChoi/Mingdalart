@@ -5,8 +5,9 @@
 //  Created by YuSeongChoi on 1/28/26.
 //
 
-import Foundation
 import CoreText
+import Foundation
+
 import RswiftResources
 
 typealias MingdalartFont = _R.font
@@ -19,11 +20,13 @@ extension MingdalartFont {
         errorArray.reserveCapacity(filteredFonts.count)
         let fontURLs: [URL] = filteredFonts.compactMap {
             guard let url = $0.bundle.url(forResource: $0.filename, withExtension: nil) else {
+                let description = "\($0.filename)을 찾을 수 없습니다. " +
+                    "\($0.bundle.bundlePath)에 해당 파일이 존재하지 않습니다."
                 errorArray.append(
                     CocoaError(
                         .fileNoSuchFile,
                         userInfo: [
-                            NSLocalizedDescriptionKey: "\($0.filename)을 찾을 수 없습니다. \($0.bundle.bundlePath)에 해당 파일이 존재하지 않습니다."
+                            NSLocalizedDescriptionKey: description
                         ]
                     )
                 )

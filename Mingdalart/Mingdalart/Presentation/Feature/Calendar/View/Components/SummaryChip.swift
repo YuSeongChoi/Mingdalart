@@ -10,13 +10,13 @@ import SwiftUI
 struct SummaryChip: View {
     let title: String
     let value: String
-    
+
     var body: some View {
         VStack(spacing: 2) {
             Text(title)
                 .font(.caption2)
                 .foregroundStyle(.secondary)
-            
+
             Text(value)
                 .pretendSemiBold(size: 12)
                 .contentTransition(.numericText())
