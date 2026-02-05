@@ -21,7 +21,6 @@ struct MingdalartApp: App {
         } catch {
             print("폰트 등록 실패: \(error.localizedDescription)")
         }
-        
         // SwiftData 등록
         do {
             let container = try ModelContainer(for: MandalaBoardEntity.self, MandalaCellEntity.self, DailyTaskEntity.self)

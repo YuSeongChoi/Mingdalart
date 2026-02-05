@@ -1,0 +1,41 @@
+########################
+# Mingdalart SwiftLint
+########################
+
+# 기본 규칙 중 끌 것
+disabled_rules:
+  - trailing_whitespace
+  - todo
+  - line_length
+
+# 기본에 없는 추가 규칙 켜기
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - vertical_whitespace
+  - colon
+  - comma
+
+# 검사 대상 경로
+included:
+  - Mingdalart
+
+# 검사 제외
+excluded:
+  - Pods
+  - DerivedData
+  - R.generated.swift
+
+# force 관련 severity 설정
+force_cast: warning
+force_try: warning
+
+# 파일 길이 제한
+file_length:
+  warning: 500
+  error: 800
+
+# 타입 이름 길이
+type_name:
+  min_length: 3
+  max_length: 50
