@@ -1,0 +1,129 @@
+name: SwiftLint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+  schedule:
+    - cron: "0 17 * * *" # 02:00 KST
+
+jobs:
+  swiftlint:
+    if: github.event_name == 'pull_request'
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache SwiftPM
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-swiftpm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-swiftpm-
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Run SwiftLint (Annotations)
+        id: lint_annotate
+        continue-on-error: true
+        run: swiftlint lint --config .swiftlint.yml --reporter github-actions-logging
+
+      - name: Run SwiftLint (JSON)
+        id: lint_json
+        continue-on-error: true
+        run: swiftlint lint --config .swiftlint.yml --reporter json > swiftlint.json
+
+      - name: Summarize SwiftLint
+        id: lint_summary
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          data = json.loads(pathlib.Path("swiftlint.json").read_text(encoding="utf-8") or "[]")
+          count = len(data)
+          if count == 0:
+            lines = ["✅ SwiftLint clean — 0 violations. 밍! 🐹"]
+          else:
+            lines = [f"SwiftLint found **{count}** violations."]
+          if count:
+            lines.append("")
+            lines.append("```")
+            for item in data[:50]:
+              path = item.get("file", "")
+              line = item.get("line", "")
+              rule = item.get("rule_id", "")
+              reason = item.get("reason", "")
+              lines.append(f"{path}:{line} [{rule}] {reason}")
+            if count > 50:
+              lines.append(f"... and {count-50} more")
+            lines.append("```")
+          pathlib.Path("swiftlint_summary.md").write_text("\\n".join(lines), encoding="utf-8")
+          print(f"count={count}")
+          PY
+          COUNT=$(python3 - <<'PY'
+          import json, pathlib
+          data = json.loads(pathlib.Path("swiftlint.json").read_text(encoding="utf-8") or "[]")
+          print(len(data))
+          PY
+          )
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+
+      - name: Comment On PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('swiftlint_summary.md', 'utf8');
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+
+      - name: Fail If Violations
+        if: steps.lint_summary.outputs.count != '0'
+        run: exit 1
+
+  swiftlint-analyze:
+    if: github.event_name == 'schedule'
+    runs-on: macos-latest
+    env:
+      DERIVED_DATA_PATH: ${{ runner.temp }}/DerivedData
+      BUILD_LOG_PATH: ${{ runner.temp }}/xcodebuild.log
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache SwiftPM
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/org.swift.swiftpm
+          key: ${{ runner.os }}-swiftpm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-swiftpm-
+
+      - name: Cache DerivedData
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DERIVED_DATA_PATH }}
+          key: ${{ runner.os }}-deriveddata-${{ hashFiles('**/*.xcodeproj/project.pbxproj') }}
+          restore-keys: |
+            ${{ runner.os }}-deriveddata-
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Build For SwiftLint Analyze
+        run: |
+          xcodebuild \
+            -project Mingdalart/Mingdalart.xcodeproj \
+            -scheme Mingdalart \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            -derivedDataPath "$DERIVED_DATA_PATH" \
+            build | tee "$BUILD_LOG_PATH"
+
+      - name: Run SwiftLint Analyze
+        run: swiftlint analyze --compiler-log-path "$BUILD_LOG_PATH" --config .swiftlint.yml
