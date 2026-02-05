@@ -22,23 +22,23 @@ extension View {
 }
 
 extension Text {
-    func NotoSansReg(size: CGFloat) -> Text {
+    func notoSansReg(size: CGFloat) -> Text {
         self.font(R.font.notoSansCJKkrRegular.swiftFontOfSize(size))
     }
     
-    func NotoSansMid(size: CGFloat) -> Text {
+    func notoSansMid(size: CGFloat) -> Text {
         self.font(R.font.notoSansCJKkrMedium.swiftFontOfSize(size))
     }
     
-    func NotoSansBold(size: CGFloat) -> Text {
+    func notoSansBold(size: CGFloat) -> Text {
         self.font(R.font.notoSansCJKkrBold.swiftFontOfSize(size))
     }
     
-    func LatoReg(size: CGFloat) -> Text {
+    func latoReg(size: CGFloat) -> Text {
         self.font(R.font.latoRegular.swiftFontOfSize(size))
     }
     
-    func LatoBold(size: CGFloat) -> Text {
+    func latoBold(size: CGFloat) -> Text {
         self.font(R.font.latoBold.swiftFontOfSize(size))
     }
     
@@ -60,23 +60,23 @@ extension Text {
 }
 
 extension View {
-    func NotoSansReg(size: CGFloat) -> some View {
+    func notoSansReg(size: CGFloat) -> some View {
         self.font(R.font.notoSansCJKkrRegular.swiftFontOfSize(size))
     }
     
-    func NotoSansMid(size: CGFloat) -> some View {
+    func notoSansMid(size: CGFloat) -> some View {
         self.font(R.font.notoSansCJKkrMedium.swiftFontOfSize(size))
     }
     
-    func NotoSansBold(size: CGFloat) -> some View {
+    func notoSansBold(size: CGFloat) -> some View {
         self.font(R.font.notoSansCJKkrBold.swiftFontOfSize(size))
     }
     
-    func LatoReg(size: CGFloat) -> some View {
+    func latoReg(size: CGFloat) -> some View {
         self.font(R.font.latoRegular.swiftFontOfSize(size))
     }
     
-    func LatoBold(size: CGFloat) -> some View {
+    func latoBold(size: CGFloat) -> some View {
         self.font(R.font.latoBold.swiftFontOfSize(size))
     }
     

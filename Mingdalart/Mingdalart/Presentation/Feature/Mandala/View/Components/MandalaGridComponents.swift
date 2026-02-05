@@ -59,25 +59,25 @@ struct MandalaGridLines: Shape {
     let cellSize: CGFloat
 
     func path(in rect: CGRect) -> Path {
-        var p = Path()
+        var path = Path()
 
         let side = cellSize * CGFloat(gridCount)
 
         // 세로 선
-        for i in 0...gridCount {
-            let x = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: x, y: 0))
-            p.addLine(to: CGPoint(x: x, y: side))
+        for lineIndex in 0...gridCount {
+            let xPosition = CGFloat(lineIndex) * cellSize
+            path.move(to: CGPoint(x: xPosition, y: 0))
+            path.addLine(to: CGPoint(x: xPosition, y: side))
         }
 
         // 가로 선
-        for i in 0...gridCount {
-            let y = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: 0, y: y))
-            p.addLine(to: CGPoint(x: side, y: y))
+        for lineIndex in 0...gridCount {
+            let yPosition = CGFloat(lineIndex) * cellSize
+            path.move(to: CGPoint(x: 0, y: yPosition))
+            path.addLine(to: CGPoint(x: side, y: yPosition))
         }
 
-        return p
+        return path
     }
 }
 
@@ -86,21 +86,21 @@ struct MandalaSeparatorLines: Shape {
     let cellSize: CGFloat
 
     func path(in rect: CGRect) -> Path {
-        var p = Path()
+        var path = Path()
         let side = cellSize * CGFloat(gridCount)
 
         // 3x3 블록 경계선(0,3,6,9)에만 굵은 선을 그린다.
-        for i in stride(from: 0, through: gridCount, by: 3) {
-            let x = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: x, y: 0))
-            p.addLine(to: CGPoint(x: x, y: side))
+        for lineIndex in stride(from: 0, through: gridCount, by: 3) {
+            let xPosition = CGFloat(lineIndex) * cellSize
+            path.move(to: CGPoint(x: xPosition, y: 0))
+            path.addLine(to: CGPoint(x: xPosition, y: side))
 
-            let y = CGFloat(i) * cellSize
-            p.move(to: CGPoint(x: 0, y: y))
-            p.addLine(to: CGPoint(x: side, y: y))
+            let yPosition = CGFloat(lineIndex) * cellSize
+            path.move(to: CGPoint(x: 0, y: yPosition))
+            path.addLine(to: CGPoint(x: side, y: yPosition))
         }
 
-        return p
+        return path
     }
 }
 
