@@ -42,30 +42,34 @@ jobs:
         id: lint_summary
         run: |
           python3 - <<'PY'
-          import json, pathlib
+          import json
+          import pathlib
+
           data = json.loads(pathlib.Path("swiftlint.json").read_text(encoding="utf-8") or "[]")
           count = len(data)
           if count == 0:
-            lines = ["✅ SwiftLint clean — 0 violations. 밍! 🐹"]
+              lines = ["✅ SwiftLint clean — 0 violations. 밍! 🐹"]
           else:
-            lines = [f"SwiftLint found **{count}** violations."]
+              lines = [f"SwiftLint found **{count}** violations."]
           if count:
-            lines.append("")
-            lines.append("```")
-            for item in data[:50]:
-              path = item.get("file", "")
-              line = item.get("line", "")
-              rule = item.get("rule_id", "")
-              reason = item.get("reason", "")
-              lines.append(f"{path}:{line} [{rule}] {reason}")
-            if count > 50:
-              lines.append(f"... and {count-50} more")
-            lines.append("```")
-          pathlib.Path("swiftlint_summary.md").write_text("\\n".join(lines), encoding="utf-8")
+              lines.append("")
+              lines.append("```")
+              for item in data[:50]:
+                  path = item.get("file", "")
+                  line = item.get("line", "")
+                  rule = item.get("rule_id", "")
+                  reason = item.get("reason", "")
+                  lines.append(f"{path}:{line} [{rule}] {reason}")
+              if count > 50:
+                  lines.append(f"... and {count-50} more")
+              lines.append("```")
+          pathlib.Path("swiftlint_summary.md").write_text("\n".join(lines), encoding="utf-8")
           print(f"count={count}")
           PY
           COUNT=$(python3 - <<'PY'
-          import json, pathlib
+          import json
+          import pathlib
+
           data = json.loads(pathlib.Path("swiftlint.json").read_text(encoding="utf-8") or "[]")
           print(len(data))
           PY
