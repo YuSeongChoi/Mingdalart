@@ -105,7 +105,7 @@ private extension CalendarView {
                         viewModel.selectDate(date)
                     } label: {
                         VStack(spacing: 4) {
-                            Text(koreanWeekdayFormatter.string(from: date))
+                            Text(Self.koreanWeekdayFormatter.string(from: date))
                                 .font(.caption2)
                                 .foregroundStyle(isSelected ? .white : secondaryTextColor)
                             Text(date, format: .dateTime.day())
@@ -147,7 +147,7 @@ private extension CalendarView {
             Button {
                 isDatePickerPresented = true
             } label: {
-                Text(koreanMonthDateFormatter.string(from: viewModel.selectedDate))
+                Text(Self.koreanMonthDateFormatter.string(from: viewModel.selectedDate))
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(secondaryTextColor)
                     .padding(.horizontal, 10)
@@ -217,7 +217,7 @@ private extension CalendarView {
     var taskList: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(koreanMonthDayFormatter.string(from: viewModel.selectedDate))
+                Text(Self.koreanMonthDayFormatter.string(from: viewModel.selectedDate))
                     .font(.caption)
                     .foregroundStyle(secondaryTextColor)
                 Spacer()
@@ -335,26 +335,26 @@ extension CalendarView {
         }
     }
 
-    private var koreanMonthDateFormatter: DateFormatter {
+    private static let koreanMonthDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy년 M월 d일"
         return formatter
-    }
+    }()
 
-    private var koreanMonthDayFormatter: DateFormatter {
+    private static let koreanMonthDayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "M월 d일"
         return formatter
-    }
+    }()
 
-    private var koreanWeekdayFormatter: DateFormatter {
+    private static let koreanWeekdayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "EEE" //
+        formatter.dateFormat = "EEE"
         return formatter
-    }
+    }()
 
     private func linkedSubGoalTitle(for task: DailyTask) -> String? {
         guard let linkedIndex = task.linkedMandalaCellIndex else { return nil }
