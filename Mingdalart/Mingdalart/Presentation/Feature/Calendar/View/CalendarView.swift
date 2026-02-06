@@ -11,6 +11,7 @@ struct CalendarView: View {
     @State private var viewModel: CalendarViewModel
     @State private var newTaskTitle: String = ""
     @State private var dateAnchor: Date
+    @State private var visibleDates: [Date]
     @State private var isDatePickerPresented: Bool = false
     @State private var isLinkSheetPresented: Bool = false
     @State private var editingTask: DailyTask?
@@ -25,7 +26,9 @@ struct CalendarView: View {
 
     init(viewModel: CalendarViewModel, mandalaCells: [MandalaCell]) {
         _viewModel = .init(initialValue: viewModel)
-        _dateAnchor = .init(initialValue: Calendar.current.startOfDay(for: viewModel.selectedDate))
+        let anchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+        _dateAnchor = .init(initialValue: anchor)
+        _visibleDates = .init(initialValue: Self.makeVisibleDates(anchor: anchor))
         self.mandalaCells = mandalaCells
     }
 
@@ -130,7 +133,7 @@ private extension CalendarView {
         HStack {
             Button {
                 viewModel.selectDate(Date())
-                dateAnchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+                updateDateAnchor(viewModel.selectedDate)
             } label: {
                 Text("오늘")
                     .font(.caption2.weight(.semibold))
@@ -166,7 +169,7 @@ private extension CalendarView {
                         get: { viewModel.selectedDate },
                         set: {
                             viewModel.selectDate($0)
-                            dateAnchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+                            updateDateAnchor(viewModel.selectedDate)
                         }
                     ),
                     displayedComponents: [.date]
@@ -327,12 +330,18 @@ private extension CalendarView {
 }
 
 extension CalendarView {
-    private var visibleDates: [Date] {
+    private static func makeVisibleDates(anchor: Date) -> [Date] {
         let calendar = Calendar.current
-        let anchor = calendar.startOfDay(for: dateAnchor)
+        let start = calendar.startOfDay(for: anchor)
         return (0...14).compactMap { dayOffset in
-            calendar.date(byAdding: .day, value: dayOffset, to: anchor)
+            calendar.date(byAdding: .day, value: dayOffset, to: start)
         }
+    }
+
+    private func updateDateAnchor(_ date: Date) {
+        let anchor = Calendar.current.startOfDay(for: date)
+        dateAnchor = anchor
+        visibleDates = Self.makeVisibleDates(anchor: anchor)
     }
 
     private static let koreanMonthDateFormatter: DateFormatter = {
