@@ -238,79 +238,80 @@ private extension CalendarView {
                     .padding(.horizontal, 16)
                     .padding(.top, 4)
             } else {
-                ScrollView {
-                    LazyVStack(spacing: 10) {
-                        ForEach(tasks) { task in
-                            HStack(spacing: 10) {
-                                Button {
-                                    viewModel.toggleTask(task)
-                                } label: {
-                                    Image(systemName: task.isDone ? "checkmark.circle.fill" : "circle")
-                                        .foregroundStyle(task.isDone ? accentColor : secondaryTextColor.opacity(0.6))
-                                }
-                                .buttonStyle(.plain)
-
-                                Button {
-                                    editingText = task.title
-                                    editingTask = task
-                                } label: {
-                                    Text(task.title)
-                                        .font(.subheadline)
-                                        .foregroundStyle(secondaryTextColor)
-                                        .strikethrough(task.isDone, color: secondaryTextColor.opacity(0.5))
-                                }
-                                .buttonStyle(.plain)
-
-                                Spacer()
-
-                                if let subGoalTitle = linkedSubGoalTitle(for: task) {
-                                    Text(subGoalTitle)
-                                        .font(.caption2)
-                                        .foregroundStyle(accentColor)
-                                        .padding(.vertical, 6)
-                                        .padding(.horizontal, 8)
-                                        .background(accentColor.opacity(0.12))
-                                        .clipShape(Capsule())
-                                }
-
-                                Button {
-                                    linkTargetTask = task
-                                    isLinkSheetPresented = true
-                                } label: {
-                                    Image(systemName: "link")
-                                        .font(.caption)
-                                        .foregroundStyle(secondaryTextColor.opacity(0.8))
-                                        .padding(6)
-                                        .background(Color.white)
-                                        .clipShape(Circle())
-                                }
-                                .buttonStyle(.plain)
+                List {
+                    ForEach(tasks) { task in
+                        HStack(spacing: 10) {
+                            Button {
+                                viewModel.toggleTask(task)
+                            } label: {
+                                Image(systemName: task.isDone ? "checkmark.circle.fill" : "circle")
+                                    .foregroundStyle(task.isDone ? accentColor : secondaryTextColor.opacity(0.6))
                             }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 12)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
-                            .shadow(color: MandalaPalette.cellShadow.opacity(0.14), radius: 4, x: 0, y: 2)
-                            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                Button(role: .destructive) {
-                                    viewModel.deleteTask(task)
-                                } label: {
-                                    Label("삭제", systemImage: "trash")
-                                }
+                            .buttonStyle(.plain)
+
+                            Button {
+                                editingText = task.title
+                                editingTask = task
+                            } label: {
+                                Text(task.title)
+                                    .font(.subheadline)
+                                    .foregroundStyle(secondaryTextColor)
+                                    .strikethrough(task.isDone, color: secondaryTextColor.opacity(0.5))
                             }
-                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                Button {
-                                    viewModel.toggleTask(task)
-                                } label: {
-                                    Label("완료", systemImage: task.isDone ? "arrow.uturn.left.circle" : "checkmark.circle")
-                                }
-                                .tint(task.isDone ? .gray : accentColor)
+                            .buttonStyle(.plain)
+
+                            Spacer()
+
+                            if let subGoalTitle = linkedSubGoalTitle(for: task) {
+                                Text(subGoalTitle)
+                                    .font(.caption2)
+                                    .foregroundStyle(accentColor)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 8)
+                                    .background(accentColor.opacity(0.12))
+                                    .clipShape(Capsule())
+                            }
+
+                            Button {
+                                linkTargetTask = task
+                                isLinkSheetPresented = true
+                            } label: {
+                                Image(systemName: "link")
+                                    .font(.caption)
+                                    .foregroundStyle(secondaryTextColor.opacity(0.8))
+                                    .padding(6)
+                                    .background(Color.white)
+                                    .clipShape(Circle())
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 12)
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                        .shadow(color: MandalaPalette.cellShadow.opacity(0.14), radius: 4, x: 0, y: 2)
+                        .listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 10, trailing: 16))
+                        .listRowBackground(Color.clear)
+                        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                            Button(role: .destructive) {
+                                viewModel.deleteTask(task)
+                            } label: {
+                                Label("삭제", systemImage: "trash")
                             }
                         }
+                        .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                            Button {
+                                viewModel.toggleTask(task)
+                            } label: {
+                                Label("완료", systemImage: task.isDone ? "arrow.uturn.left.circle" : "checkmark.circle")
+                            }
+                            .tint(task.isDone ? .gray : accentColor)
+                        }
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.bottom, 10)
                 }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
                 .background(backgroundColor)
                 .frame(minHeight: 0)
             }
