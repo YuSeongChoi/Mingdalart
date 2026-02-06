@@ -65,8 +65,9 @@ final class CalendarViewModel {
     }
 
     var tasksForSelectedDate: [DailyTask] {
-        tasks
-            .filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }
+        let calendar = Calendar.current
+        return tasks
+            .filter { calendar.isDate($0.date, inSameDayAs: selectedDate) }
             .sorted { $0.createdAt < $1.createdAt }
     }
 
