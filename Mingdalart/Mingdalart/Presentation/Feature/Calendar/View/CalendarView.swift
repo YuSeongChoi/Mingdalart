@@ -215,19 +215,20 @@ private extension CalendarView {
     }
 
     var taskList: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        let tasks = viewModel.tasksForSelectedDate
+        return VStack(alignment: .leading, spacing: 10) {
             HStack {
                 Text(Self.koreanMonthDayFormatter.string(from: viewModel.selectedDate))
                     .font(.caption)
                     .foregroundStyle(secondaryTextColor)
                 Spacer()
-                Text("\(viewModel.tasksForSelectedDate.count)개")
+                Text("\(tasks.count)개")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
             .padding(.horizontal, 16)
 
-            if viewModel.tasksForSelectedDate.isEmpty {
+            if tasks.isEmpty {
                 Text("오늘의 할 일을 적어볼까요?")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
@@ -235,7 +236,7 @@ private extension CalendarView {
                     .padding(.top, 4)
             } else {
                 List {
-                    ForEach(viewModel.tasksForSelectedDate) { task in
+                    ForEach(tasks) { task in
                         HStack(spacing: 10) {
                             Button {
                                 viewModel.toggleTask(task)
