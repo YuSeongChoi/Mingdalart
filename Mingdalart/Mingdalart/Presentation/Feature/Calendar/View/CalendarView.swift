@@ -125,7 +125,7 @@ private extension CalendarView {
                 }
             }
             .padding(.vertical, 4)
-            .animation(.smooth(duration: 0.5), value: dateAnchor)
+            .animation(.smooth(duration: 0.5), value: visibleDates)
         }
     }
 
