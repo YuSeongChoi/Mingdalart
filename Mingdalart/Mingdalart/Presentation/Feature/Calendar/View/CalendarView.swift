@@ -11,6 +11,7 @@ struct CalendarView: View {
     @State private var viewModel: CalendarViewModel
     @State private var newTaskTitle: String = ""
     @State private var dateAnchor: Date
+    @State private var visibleDates: [Date]
     @State private var isDatePickerPresented: Bool = false
     @State private var isLinkSheetPresented: Bool = false
     @State private var editingTask: DailyTask?
@@ -25,7 +26,9 @@ struct CalendarView: View {
 
     init(viewModel: CalendarViewModel, mandalaCells: [MandalaCell]) {
         _viewModel = .init(initialValue: viewModel)
-        _dateAnchor = .init(initialValue: Calendar.current.startOfDay(for: viewModel.selectedDate))
+        let anchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+        _dateAnchor = .init(initialValue: anchor)
+        _visibleDates = .init(initialValue: Self.makeVisibleDates(anchor: anchor))
         self.mandalaCells = mandalaCells
     }
 
@@ -105,7 +108,7 @@ private extension CalendarView {
                         viewModel.selectDate(date)
                     } label: {
                         VStack(spacing: 4) {
-                            Text(koreanWeekdayFormatter.string(from: date))
+                            Text(Self.koreanWeekdayFormatter.string(from: date))
                                 .font(.caption2)
                                 .foregroundStyle(isSelected ? .white : secondaryTextColor)
                             Text(date, format: .dateTime.day())
@@ -122,7 +125,7 @@ private extension CalendarView {
                 }
             }
             .padding(.vertical, 4)
-            .animation(.smooth(duration: 0.5), value: dateAnchor)
+            .animation(.smooth(duration: 0.5), value: visibleDates)
         }
     }
 
@@ -130,7 +133,7 @@ private extension CalendarView {
         HStack {
             Button {
                 viewModel.selectDate(Date())
-                dateAnchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+                updateDateAnchor(viewModel.selectedDate)
             } label: {
                 Text("오늘")
                     .font(.caption2.weight(.semibold))
@@ -147,7 +150,7 @@ private extension CalendarView {
             Button {
                 isDatePickerPresented = true
             } label: {
-                Text(koreanMonthDateFormatter.string(from: viewModel.selectedDate))
+                Text(Self.koreanMonthDateFormatter.string(from: viewModel.selectedDate))
                     .font(.caption.weight(.semibold))
                     .foregroundStyle(secondaryTextColor)
                     .padding(.horizontal, 10)
@@ -166,7 +169,7 @@ private extension CalendarView {
                         get: { viewModel.selectedDate },
                         set: {
                             viewModel.selectDate($0)
-                            dateAnchor = Calendar.current.startOfDay(for: viewModel.selectedDate)
+                            updateDateAnchor(viewModel.selectedDate)
                         }
                     ),
                     displayedComponents: [.date]
@@ -215,19 +218,20 @@ private extension CalendarView {
     }
 
     var taskList: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        let tasks = viewModel.tasksForSelectedDate
+        return VStack(alignment: .leading, spacing: 10) {
             HStack {
-                Text(koreanMonthDayFormatter.string(from: viewModel.selectedDate))
+                Text(Self.koreanMonthDayFormatter.string(from: viewModel.selectedDate))
                     .font(.caption)
                     .foregroundStyle(secondaryTextColor)
                 Spacer()
-                Text("\(viewModel.tasksForSelectedDate.count)개")
+                Text("\(tasks.count)개")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
             .padding(.horizontal, 16)
 
-            if viewModel.tasksForSelectedDate.isEmpty {
+            if tasks.isEmpty {
                 Text("오늘의 할 일을 적어볼까요?")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
@@ -235,7 +239,7 @@ private extension CalendarView {
                     .padding(.top, 4)
             } else {
                 List {
-                    ForEach(viewModel.tasksForSelectedDate) { task in
+                    ForEach(tasks) { task in
                         HStack(spacing: 10) {
                             Button {
                                 viewModel.toggleTask(task)
@@ -327,34 +331,40 @@ private extension CalendarView {
 }
 
 extension CalendarView {
-    private var visibleDates: [Date] {
+    private static func makeVisibleDates(anchor: Date) -> [Date] {
         let calendar = Calendar.current
-        let anchor = calendar.startOfDay(for: dateAnchor)
+        let start = calendar.startOfDay(for: anchor)
         return (0...14).compactMap { dayOffset in
-            calendar.date(byAdding: .day, value: dayOffset, to: anchor)
+            calendar.date(byAdding: .day, value: dayOffset, to: start)
         }
     }
 
-    private var koreanMonthDateFormatter: DateFormatter {
+    private func updateDateAnchor(_ date: Date) {
+        let anchor = Calendar.current.startOfDay(for: date)
+        dateAnchor = anchor
+        visibleDates = Self.makeVisibleDates(anchor: anchor)
+    }
+
+    private static let koreanMonthDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy년 M월 d일"
         return formatter
-    }
+    }()
 
-    private var koreanMonthDayFormatter: DateFormatter {
+    private static let koreanMonthDayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "M월 d일"
         return formatter
-    }
+    }()
 
-    private var koreanWeekdayFormatter: DateFormatter {
+    private static let koreanWeekdayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "EEE" //
+        formatter.dateFormat = "EEE"
         return formatter
-    }
+    }()
 
     private func linkedSubGoalTitle(for task: DailyTask) -> String? {
         guard let linkedIndex = task.linkedMandalaCellIndex else { return nil }
