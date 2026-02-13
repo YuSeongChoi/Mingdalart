@@ -66,6 +66,8 @@
 		5DECFD8E2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */; };
 		5DECFD902F21F78500D69A9B /* UpdateCellTextUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */; };
 		5DECFD962F21F9F100D69A9B /* SaveCellUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */; };
+		5DEF3EC42F3DCDE300A8B7F3 /* MandalaRuleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF3EBF2F3DCDE300A8B7F3 /* MandalaRuleTests.swift */; };
+		5DEF3EC52F3DCDE300A8B7F3 /* MandalaUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEF3EC12F3DCDE300A8B7F3 /* MandalaUseCaseTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,16 +140,10 @@
 		5DECFD8D2F21F3CE00D69A9B /* EnsureDefaultBoardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnsureDefaultBoardUseCase.swift; sourceTree = "<group>"; };
 		5DECFD8F2F21F78500D69A9B /* UpdateCellTextUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCellTextUseCase.swift; sourceTree = "<group>"; };
 		5DECFD952F21F9F100D69A9B /* SaveCellUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCellUseCase.swift; sourceTree = "<group>"; };
+		5DEF3EBF2F3DCDE300A8B7F3 /* MandalaRuleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaRuleTests.swift; sourceTree = "<group>"; };
+		5DEF3EC12F3DCDE300A8B7F3 /* MandalaUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MandalaUseCaseTests.swift; sourceTree = "<group>"; };
 		5DF74BEF2F0E3F4E005E589C /* Mingdalart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mingdalart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		5D920D552F233A8200874F96 /* MingdalartTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MingdalartTests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		5D920D512F233A8200874F96 /* Frameworks */ = {
@@ -441,11 +437,36 @@
 			path = Mingdalart;
 			sourceTree = "<group>";
 		};
+		5DEF3EC02F3DCDE300A8B7F3 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				5DEF3EBF2F3DCDE300A8B7F3 /* MandalaRuleTests.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		5DEF3EC22F3DCDE300A8B7F3 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				5DEF3EC12F3DCDE300A8B7F3 /* MandalaUseCaseTests.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		5DEF3EC32F3DCDE300A8B7F3 /* MingdalartTests */ = {
+			isa = PBXGroup;
+			children = (
+				5DEF3EC02F3DCDE300A8B7F3 /* Rules */,
+				5DEF3EC22F3DCDE300A8B7F3 /* UseCases */,
+			);
+			path = MingdalartTests;
+			sourceTree = "<group>";
+		};
 		5DF74BE62F0E3F4E005E589C = {
 			isa = PBXGroup;
 			children = (
 				5DECFD7A2F21F32100D69A9B /* Mingdalart */,
-				5D920D552F233A8200874F96 /* MingdalartTests */,
+				5DEF3EC32F3DCDE300A8B7F3 /* MingdalartTests */,
 				5DF74BF02F0E3F4E005E589C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -474,9 +495,6 @@
 			);
 			dependencies = (
 				5D920D592F233A8200874F96 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				5D920D552F233A8200874F96 /* MingdalartTests */,
 			);
 			name = MingdalartTests;
 			packageProductDependencies = (
@@ -613,6 +631,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DEF3EC42F3DCDE300A8B7F3 /* MandalaRuleTests.swift in Sources */,
+				5DEF3EC52F3DCDE300A8B7F3 /* MandalaUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,7 +706,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.cys.MingdalartTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ys.MingdalartTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -709,7 +729,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.cys.MingdalartTests;
+				PRODUCT_BUNDLE_IDENTIFIER = ys.MingdalartTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -844,6 +864,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N7PD4AXR6;
@@ -870,8 +891,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.cys.Mingdalart;
+				PRODUCT_BUNDLE_IDENTIFIER = ys.Mingdalart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -892,6 +914,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N7PD4AXR6;
@@ -918,8 +941,9 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.cys.Mingdalart;
+				PRODUCT_BUNDLE_IDENTIFIER = ys.Mingdalart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
