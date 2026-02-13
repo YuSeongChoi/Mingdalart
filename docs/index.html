@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mingdalart | 목표를 실행으로</title>
+  <meta name="description" content="만다르트와 캘린더로 목표를 설계하고 매일 실천하는 목표 관리 앱, Mingdalart" />
+  <style>
+    :root {
+      --bg: #0f1218;
+      --panel: #171c25;
+      --text: #f2f5f9;
+      --sub: #adb7c8;
+      --line: #2a3342;
+      --mint: #99e2d0;
+      --sand: #f3ebe2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(70rem 35rem at 85% -10%, #1f2d46 0%, transparent 60%),
+        radial-gradient(55rem 25rem at -10% 120%, #1e3b39 0%, transparent 65%),
+        var(--bg);
+      line-height: 1.5;
+    }
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+      padding: 2rem 0 4rem;
+    }
+    .hero {
+      display: grid;
+      gap: 1.2rem;
+      padding: 2rem 0 1rem;
+    }
+    .badge {
+      width: fit-content;
+      padding: .35rem .7rem;
+      border: 1px solid #36596c;
+      border-radius: 999px;
+      color: #bde7f2;
+      font-size: .85rem;
+      background: rgba(57, 98, 121, .25);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5.5vw, 4rem);
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+    .lead {
+      margin: 0;
+      max-width: 60ch;
+      color: var(--sub);
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+    }
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+      margin-top: .5rem;
+    }
+    .btn {
+      border: 1px solid var(--line);
+      border-radius: .8rem;
+      padding: .65rem .95rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      background: rgba(255,255,255,.03);
+    }
+    .btn:hover { border-color: #4a5b73; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .9rem;
+      margin: 1.6rem 0 2rem;
+    }
+    .card {
+      background: linear-gradient(165deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+    .card h2 {
+      margin: 0 0 .45rem;
+      font-size: 1rem;
+    }
+    .card p {
+      margin: 0;
+      color: var(--sub);
+      font-size: .95rem;
+    }
+    .shots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+    .shot {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: #0d1118;
+      aspect-ratio: 9 / 19.5;
+    }
+    .shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    footer {
+      margin-top: 2.4rem;
+      color: #8f9ab0;
+      font-size: .9rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+      justify-content: space-between;
+    }
+    .links {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+    }
+    .links a { color: #d7e6f8; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <span class="badge">Goal Planner App</span>
+      <h1>밍다르트<br/>Mingdalart</h1>
+      <p class="lead">만다르트와 캘린더를 결합해 목표를 실천 가능한 계획으로 바꿉니다. 장기 목표를 일일 실행으로 연결해 꾸준함을 만듭니다.</p>
+      <div class="cta">
+        <a class="btn" href="support.html">지원 페이지</a>
+        <a class="btn" href="privacy.html">개인정보처리방침</a>
+      </div>
+    </section>
+
+    <section class="feature-grid" aria-label="핵심 기능">
+      <article class="card">
+        <h2>만다르트 목표 설계</h2>
+        <p>핵심 목표와 세부 실행 항목을 구조적으로 작성합니다.</p>
+      </article>
+      <article class="card">
+        <h2>빠른 입력 시트</h2>
+        <p>생각난 목표를 즉시 추가하고 수정할 수 있습니다.</p>
+      </article>
+      <article class="card">
+        <h2>캘린더 연동</h2>
+        <p>날짜별 진행 현황을 확인하고 루틴을 유지합니다.</p>
+      </article>
+      <article class="card">
+        <h2>리스트 기반 목표 설정</h2>
+        <p>캘린더 리스트에서 바로 목표를 배치해 실행력을 높입니다.</p>
+      </article>
+    </section>
+
+    <section aria-label="앱 스크린샷">
+      <h2>App Store Screenshots</h2>
+      <div class="shots">
+        <figure class="shot"><img src="screenshot/store1.png" alt="밍다르트 스크린샷 1" loading="lazy" /></figure>
+        <figure class="shot"><img src="screenshot/store2.png" alt="밍다르트 스크린샷 2" loading="lazy" /></figure>
+        <figure class="shot"><img src="screenshot/store3.png" alt="밍다르트 스크린샷 3" loading="lazy" /></figure>
+        <figure class="shot"><img src="screenshot/store4.png" alt="밍다르트 스크린샷 4" loading="lazy" /></figure>
+        <figure class="shot"><img src="screenshot/store5.png" alt="밍다르트 스크린샷 5" loading="lazy" /></figure>
+        <figure class="shot"><img src="screenshot/store6.png" alt="밍다르트 스크린샷 6" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Mingdalart. All rights reserved.</span>
+      <nav class="links" aria-label="바닥글 링크">
+        <a href="support.html">Support</a>
+        <a href="privacy.html">Privacy</a>
+      </nav>
+    </footer>
+  </main>
+</body>
+</html>
