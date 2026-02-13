@@ -8,6 +8,11 @@
   <a href="https://yuseongchoi.github.io/Mingdalart/privacy.html"><img alt="Privacy" src="https://img.shields.io/badge/Privacy-Policy-6f42c1"></a>
 </p>
 
+## 릴리즈
+
+- Latest Release: [`v1.0.0`](https://github.com/YuSeongChoi/Mingdalart/releases/tag/v1.0.0)
+- Release Notes: [GitHub Releases](https://github.com/YuSeongChoi/Mingdalart/releases)
+
 ## 미리보기
 
 | | | |
